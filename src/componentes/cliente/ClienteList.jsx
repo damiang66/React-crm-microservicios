@@ -1,52 +1,49 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { Link, useNavigate } from "react-router-dom";
 
-import { UseUsuario } from "../../hooks/UseUsuario";
-import { Link } from "react-router-dom";
-
-
-
-export const UsuarioListar = () => {
-    const { usuarios, getUsuarios } = useContext(UserContext);
-    const {formularioNuevoUsuario}= UseUsuario()
-    const abrir=()=>{
-        formularioNuevoUsuario()
-    }
- 
-  
+export const ClienteList = ()=>{
+    const { clientes, getClientes } = useContext(UserContext);
+    const navegate = useNavigate();
     useEffect(()=>{
-     
-        getUsuarios()
+        getClientes()
+       
     },[])
-   
+    const abrir = ()=>{
+        navegate('/eleccion/clientes')
+    }
     return (<>
-    <h2>Lista de Usuarios</h2>
+    
+    <h2>Lista de Clientes</h2>
     <button onClick={abrir} className="btn btn-primary">Agregar</button>
         <table className="table">
-         
+           
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Apellido</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">dni</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Municicpio</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
-            {usuarios?.map((u) => (
+            {clientes?.map((u) => (
                 <tr key={u.id}> 
                     
-                    <td  scope="row">{u.id}</td>
-                    
-                    <td>{u.nombre}</td>
+                    <td  scope="row">{u.nombre}</td>
                     
                     <td>{u.apellido}</td>
                     
-                    <td>{u.cedula}</td>
+                    <td>{u.dni}</td>
+                    
+                    <td>{u.municipio?.nombre}</td>
+                    <td>{u.tipo}</td>
                     <td>
-                        <Link to={`/usuarios/form/${u.id}`} className="btn btn-success">Editar</Link>
+                        {/*<Link to={`/usuarios/form/${u.id}`} className="btn btn-success">Editar</Link> */}
+                       
                     </td>
                     <td>
                         <button className="btn btn-danger">Eliminar</button>
@@ -59,6 +56,5 @@ export const UsuarioListar = () => {
                 
             </tbody>
         </table>
-    </>);
-};
-
+    </>)
+}

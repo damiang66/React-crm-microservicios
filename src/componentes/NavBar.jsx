@@ -17,7 +17,7 @@ export const NavBar = ()=>{
           <NavLink className="nav-link" to={"/usuarios"}>usuarios</NavLink>
         </li>
         <li className="nav-item">
-        <a className="nav-link" href="#">clientes</a>
+        <NavLink className="nav-link" to={"/clientes"}>Clientes</NavLink>
         </li>
       </ul>
       <form className="d-flex">

@@ -27,8 +27,7 @@ export const UsuarioForm = () => {
     }
     const onInputChange = ({target})=>{
         const {name,value}= target;
-        console.log(name);
-        console.log(value);
+       
         setUsuario({
             ...usuario,
             [name]:value
