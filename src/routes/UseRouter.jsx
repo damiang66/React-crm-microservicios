@@ -7,6 +7,8 @@ import { ClienteList } from "../componentes/cliente/ClienteList"
 import { CLienteEleccion } from "../componentes/cliente/ClienteEleccion"
 import { EmprendedorForm } from "../componentes/cliente/EmprendedorForm"
 import { EmpresarioForm } from "../componentes/cliente/EmpresarioForm"
+import { ListaProceso } from "../componentes/procesos/ListaProceso"
+import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
 
 export const UseRouter = () => {
   return (<>
@@ -24,6 +26,9 @@ export const UseRouter = () => {
       <Route path="eleccion/clientes" element={<CLienteEleccion />} />
       <Route path="emprendedor" element={<EmprendedorForm />} />
       <Route path="empresario" element={<EmpresarioForm />} />
+      <Route path="empresario" element={<EmpresarioForm />} />
+      //procesos
+      <Route path="procesos" element={<ProcesosAllPage />} />
 
     </Routes>
   </>)
