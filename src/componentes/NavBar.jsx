@@ -19,6 +19,9 @@ export const NavBar = ()=>{
         <li className="nav-item">
         <NavLink className="nav-link" to={"/clientes"}>Clientes</NavLink>
         </li>
+        <li className="nav-item">
+        <NavLink className="nav-link" to={"/procesos"}>Procesos</NavLink>
+        </li>
       </ul>
       <form className="d-flex">
        
