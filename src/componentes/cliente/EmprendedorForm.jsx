@@ -10,16 +10,19 @@ export const EmprendedorForm = () => {
     const navegate = useNavigate();
     const [emprendedor, setEmprendedor] = useState({})
     const [municipio, setMunicipio] = useState([])
+    
     useEffect(() => {
         traerMunicipio();
 
     }, [])
+
     const traerMunicipio = async () => {
         const respuesta = await municipiosFindAll();
         console.log(respuesta);
         setMunicipio(respuesta.data)
 
     }
+
     const onInputChange = ({ target }) => {
         const { name, value } = target;
         console.log(name);
@@ -146,6 +149,15 @@ export const EmprendedorForm = () => {
                 <label htmlFor="exampleInputPassword1" className="form-label">Direccion</label>
                 <input onChange={onInputChange} value={emprendedor?.direccion} name="direccion" type="text" className="form-control" />
             </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Idea de negocio</label>
+                <input onChange={onInputChange} value={emprendedor?.ideaNegocio} name="ideaNegocio" type="text" className="form-control" />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Producto</label>
+                <input onChange={onInputChange} value={emprendedor?.producto} name="producto" type="text" className="form-control" />
+            </div>
+
 
             {id ? <button type="submit" className="btn btn-primary">Editar</button> : <button type="submit" className="btn btn-primary">Cargar</button>}
 

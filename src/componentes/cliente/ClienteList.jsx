@@ -15,7 +15,7 @@ export const ClienteList = ()=>{
     return (<>
     
     <h2>Lista de Clientes</h2>
-    <button onClick={abrir} className="btn btn-primary">Agregar</button>
+    
         <table className="table">
            
             <thead>
@@ -29,8 +29,10 @@ export const ClienteList = ()=>{
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
+            
             <tbody>
             {clientes?.map((u) => (
+                
                 <tr key={u.id}> 
                     
                     <td  scope="row">{u.nombre}</td>
@@ -49,12 +51,14 @@ export const ClienteList = ()=>{
                         <button className="btn btn-danger">Eliminar</button>
                     </td>
                     </tr>
+                    
                 ))}
+                </tbody>
 
 
 
                 
-            </tbody>
+            
         </table>
     </>)
 }
