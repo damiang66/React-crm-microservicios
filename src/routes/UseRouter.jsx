@@ -9,6 +9,8 @@ import { EmprendedorForm } from "../componentes/cliente/EmprendedorForm"
 import { EmpresarioForm } from "../componentes/cliente/EmpresarioForm"
 import { ListaProceso } from "../componentes/procesos/ListaProceso"
 import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
+import { Autoevaluacion } from "../componentes/procesos/emprendedor/autoevaluacion/Autoevaluacion"
+import { Diagnostico } from "../componentes/procesos/empresario/DIagnostico"
 
 export const UseRouter = () => {
   return (<>
@@ -29,6 +31,10 @@ export const UseRouter = () => {
       <Route path="empresario" element={<EmpresarioForm />} />
       //procesos
       <Route path="procesos" element={<ProcesosAllPage />} />
+      // empresario
+      <Route path="autoevaluacion" element={<Autoevaluacion />} />
+      //emprendedor
+      <Route path="diagnostico" element={<Diagnostico />} />
 
     </Routes>
   </>)
