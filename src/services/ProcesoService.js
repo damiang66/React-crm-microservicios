@@ -10,4 +10,12 @@ export const procesosFindAll= async()=>{
       return error;  
     }
 
-}
+ }
+ export const comprobarCliente = async(idCliente)=>{
+  try {
+    const respuesta = await axios.get(`${url}/cliente/comprobar/${idCliente}`)
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+ }
