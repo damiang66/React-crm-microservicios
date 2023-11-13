@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Autoevaluacion = () => {
+    const [proceso,setProceso]=useState({})
+    const guardar=()=>{
+        event.preventDefault();
+console.log(proceso);
+    }
   return (
+    
     <div>
           <div className="row">
           
@@ -20,7 +26,7 @@ export const Autoevaluacion = () => {
                               </tr>
                           </thead>
                           <tbody>
-                              <tr>
+                              <tr value={proceso.pregunta1}>
                                   <td scope="col-3">
                                       <label htmlFor="pregunta1">Soy persistente, perseverante.</label>
                                   </td>
@@ -37,7 +43,7 @@ export const Autoevaluacion = () => {
                                           name="pregunta1" id="pregunta1c" />
                                   </td>
                               </tr>
-                            
+                            <tr value={proceso.pregunta2}>
                                   <td scope="col-3">
                                       <label htmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
                                           parte de mis ahorros.</label>
@@ -54,6 +60,7 @@ export const Autoevaluacion = () => {
                                       <input value="QUIZAS" className="form-check-input" type="radio"
                                           name="pregunta2" id="pregunta2c" />
                                   </td>
+                                  </tr>
                                   <tr>
                                       <td scope="col-3">
                                           <label htmlFor="pregunta3">Estoy preparado, si fuese necesario, a bajar mis estandares de vida
@@ -547,6 +554,7 @@ export const Autoevaluacion = () => {
 
                           </tbody>
                       </table>
+                      <button onClick={guardar} className='btn btn-primary'>Guardar</button>
                   </form>
               </div>
 
