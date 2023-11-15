@@ -6,6 +6,13 @@ export const Autoevaluacion = () => {
         event.preventDefault();
 console.log(proceso);
     }
+    const cambio = ({target})=>{
+        const {name,value}=target;
+setProceso({
+...proceso,
+    [name]:value
+})
+    }
   return (
     
     <div>
@@ -26,7 +33,7 @@ console.log(proceso);
                               </tr>
                           </thead>
                           <tbody>
-                              <tr value={proceso.pregunta1}>
+                              <tr onChange={cambio} value={proceso.pregunta1} name="pregunta1">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta1">Soy persistente, perseverante.</label>
                                   </td>
@@ -43,7 +50,7 @@ console.log(proceso);
                                           name="pregunta1" id="pregunta1c" />
                                   </td>
                               </tr>
-                            <tr value={proceso.pregunta2}>
+                            <tr onChange={cambio} value={proceso.pregunta2} name="pregunta2">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
                                           parte de mis ahorros.</label>
