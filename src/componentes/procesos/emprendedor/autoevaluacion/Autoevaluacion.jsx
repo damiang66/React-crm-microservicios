@@ -1,18 +1,40 @@
 import React, { useState } from 'react'
 
 export const Autoevaluacion = () => {
-    const [proceso,setProceso]=useState({})
+    const procesoInicial={
+    procesosEmprendedor:{
+        autoevaluacion:{
+            evaluacion:[]
+        }
+    }
+    }
+    const [proceso,setProceso]=useState(pro)
     const guardar=()=>{
         event.preventDefault();
 console.log(proceso);
     }
-    const cambio = ({target})=>{
-        const {name,value}=target;
-setProceso({
-...proceso,
-    [name]:value
-})
-    }
+    const cambio = ({ target }) => {
+        const { name, value } = target;
+    
+        setProceso((proceso) => {
+            return {
+                ...proceso,
+                procesoEmprendedor: {
+                    ...proceso.procesoEmprendedor,
+                    autoevaluacion: {
+                        ...proceso.procesoEmprendedor.autoevaluacion,
+                        evaluacion:[
+                            value
+                        ]   
+                        
+                        
+                   
+                    }
+                }
+            };
+        });
+    };
+    
   return (
     
     <div>
@@ -33,7 +55,7 @@ setProceso({
                               </tr>
                           </thead>
                           <tbody>
-                              <tr onChange={cambio} value={proceso.pregunta1} name="pregunta1">
+                              <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[0]} name="evaluacion[0]">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta1">Soy persistente, perseverante.</label>
                                   </td>
@@ -50,7 +72,7 @@ setProceso({
                                           name="pregunta1" id="pregunta1c" />
                                   </td>
                               </tr>
-                            <tr onChange={cambio} value={proceso.pregunta2} name="pregunta2">
+                            <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[1]} name="evaluacion[1]">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
                                           parte de mis ahorros.</label>
