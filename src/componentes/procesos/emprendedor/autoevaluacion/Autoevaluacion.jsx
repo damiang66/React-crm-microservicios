@@ -1,7 +1,43 @@
-import React from 'react'
+
+import React, { useState } from 'react'
 
 export const Autoevaluacion = () => {
+    const procesoInicial={
+    procesosEmprendedor:{
+        autoevaluacion:{
+            evaluacion:[]
+        }
+    }
+    }
+    const [proceso,setProceso]=useState(pro)
+    const guardar=()=>{
+        event.preventDefault();
+console.log(proceso);
+    }
+    const cambio = ({ target }) => {
+        const { name, value } = target;
+    
+        setProceso((proceso) => {
+            return {
+                ...proceso,
+                procesoEmprendedor: {
+                    ...proceso.procesoEmprendedor,
+                    autoevaluacion: {
+                        ...proceso.procesoEmprendedor.autoevaluacion,
+                        evaluacion:[
+                            value
+                        ]   
+                        
+                        
+                   
+                    }
+                }
+            };
+        });
+    };
+    
   return (
+    
     <div>
           <div className="row">
           
@@ -20,9 +56,9 @@ export const Autoevaluacion = () => {
                               </tr>
                           </thead>
                           <tbody>
-                              <tr>
+                              <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[0]} name="evaluacion[0]">
                                   <td scope="col-3">
-                                      <label htmlhtmlFor="pregunta1">Soy persistente, perseverante.</label>
+                                      <label htmlFor="pregunta1">Soy persistente, perseverante.</label>
                                   </td>
                                   <td scope="col-1">
                                       <input value="SI" className="form-check-input" type="radio"
@@ -37,9 +73,9 @@ export const Autoevaluacion = () => {
                                           name="pregunta1" id="pregunta1c" />
                                   </td>
                               </tr>
-                            
+                            <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[1]} name="evaluacion[1]">
                                   <td scope="col-3">
-                                      <label htmlhtmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
+                                      <label htmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
                                           parte de mis ahorros.</label>
                                   </td>
                                   <td scope="col-1">
@@ -54,9 +90,10 @@ export const Autoevaluacion = () => {
                                       <input value="QUIZAS" className="form-check-input" type="radio"
                                           name="pregunta2" id="pregunta2c" />
                                   </td>
+                                  </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta3">Estoy preparado, si fuese necesario, a bajar mis estandares de vida
+                                          <label htmlFor="pregunta3">Estoy preparado, si fuese necesario, a bajar mis estandares de vida
                                               hasta que mi negocio sea rentable.</label>
                                       </td>
                                       <td scope="col-1">
@@ -74,7 +111,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta4">Tengo ideas nuevas y diferentes.</label>
+                                          <label htmlFor="pregunta4">Tengo ideas nuevas y diferentes.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -91,7 +128,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta5">Me adapto a los cambios.</label>
+                                          <label htmlFor="pregunta5">Me adapto a los cambios.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -108,7 +145,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta6">Percibo problemas como desafíos y oportunidades.</label>
+                                          <label htmlFor="pregunta6">Percibo problemas como desafíos y oportunidades.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -125,7 +162,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta7">Me recupero rápido de contratiempos personales.</label>
+                                          <label htmlFor="pregunta7">Me recupero rápido de contratiempos personales.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -142,7 +179,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta8">Soy positivo/a y seguro/a de mí mismo/a.</label>
+                                          <label htmlFor="pregunta8">Soy positivo/a y seguro/a de mí mismo/a.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -159,7 +196,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta9">Me gusta tener el control.</label>
+                                          <label htmlFor="pregunta9">Me gusta tener el control.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -176,7 +213,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta10">Disfruto la competencia.</label>
+                                          <label htmlFor="pregunta10">Disfruto la competencia.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -193,7 +230,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta11">He estado involucrado/a en un negocio parecido al que quiero
+                                          <label htmlFor="pregunta11">He estado involucrado/a en un negocio parecido al que quiero
                                               empezar.</label>
                                       </td>
                                       <td scope="col-1">
@@ -211,7 +248,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta12">Tengo amigos o familiares que me pueden ayudar a empezar.</label>
+                                          <label htmlFor="pregunta12">Tengo amigos o familiares que me pueden ayudar a empezar.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -228,7 +265,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta13">Mi familia y esposa/o apoyan mi decisión y están preparados a
+                                          <label htmlFor="pregunta13">Mi familia y esposa/o apoyan mi decisión y están preparados a
                                               soportar el stress que tendré como consecuencia de mi empresa.</label>
                                       </td>
                                       <td scope="col-1">
@@ -246,7 +283,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta14">Tengo la resistencia física y la fortaleza emocional para manejar el
+                                          <label htmlFor="pregunta14">Tengo la resistencia física y la fortaleza emocional para manejar el
                                               estrés del trabajo, las horas extras, y el trabajo durante los fines de semana y
                                               feriados.</label>
                                       </td>
@@ -265,7 +302,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta15">Soy organizado y me gusta planear con antelación.</label>
+                                          <label htmlFor="pregunta15">Soy organizado y me gusta planear con antelación.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -282,7 +319,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta16">Me llevo bien con toda clase de gente, desde banqueros hasta
+                                          <label htmlFor="pregunta16">Me llevo bien con toda clase de gente, desde banqueros hasta
                                               empleados.</label>
                                       </td>
                                       <td scope="col-1">
@@ -300,7 +337,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta17">Tengo buen juicio y seré capaz de emplear a la gente indicada para
+                                          <label htmlFor="pregunta17">Tengo buen juicio y seré capaz de emplear a la gente indicada para
                                               mi negocio.</label>
                                       </td>
                                       <td scope="col-1">
@@ -318,7 +355,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta18">Puedo manejar y supervisar empleados para obtener lo mejor de
+                                          <label htmlFor="pregunta18">Puedo manejar y supervisar empleados para obtener lo mejor de
                                               ellos.</label>
                                       </td>
                                       <td scope="col-1">
@@ -336,7 +373,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta19">Si descubro que no tengo las habilidades básicas o el capital
+                                          <label htmlFor="pregunta19">Si descubro que no tengo las habilidades básicas o el capital
                                               necesario para iniciar mi negocio, estoy dispuesto/a retrasar mis planes hasta que lo
                                               adquiera.</label>
                                       </td>
@@ -355,7 +392,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta20">Puedo reconocer, admitir y aprender de mis errores.</label>
+                                          <label htmlFor="pregunta20">Puedo reconocer, admitir y aprender de mis errores.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -372,7 +409,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta20">Puedo convivir con gente que no me agrada.</label>
+                                          <label htmlFor="pregunta20">Puedo convivir con gente que no me agrada.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -389,7 +426,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta22">Soy bueno/a tomando decisiones.</label>
+                                          <label htmlFor="pregunta22">Soy bueno/a tomando decisiones.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -406,7 +443,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta23">Tengo la habilidad de observar el contexto en el que estoy y darme
+                                          <label htmlFor="pregunta23">Tengo la habilidad de observar el contexto en el que estoy y darme
                                               cuenta de lo que quiere la gente.</label>
                                       </td>
                                       <td scope="col-1">
@@ -424,7 +461,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta24">Soy buen vendedor/a y puedo vender mis ideas y servicios a otras
+                                          <label htmlFor="pregunta24">Soy buen vendedor/a y puedo vender mis ideas y servicios a otras
                                               personas.</label>
                                       </td>
                                       <td scope="col-1">
@@ -442,7 +479,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta25">Siempre busco formas de hacer las cosas de una mejor manera.</label>
+                                          <label htmlFor="pregunta25">Siempre busco formas de hacer las cosas de una mejor manera.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -459,7 +496,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta26">Soy una persona que nunca se da por vencida.</label>
+                                          <label htmlFor="pregunta26">Soy una persona que nunca se da por vencida.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -476,7 +513,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta27">Hago que las cosas sucedan, en vez de esperar a que sucedan.</label>
+                                          <label htmlFor="pregunta27">Hago que las cosas sucedan, en vez de esperar a que sucedan.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -493,7 +530,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta28">Busco ayuda, retroalimentación y crítica constructiva para mejorar como
+                                          <label htmlFor="pregunta28">Busco ayuda, retroalimentación y crítica constructiva para mejorar como
                                               persona.</label>
                                       </td>
                                       <td scope="col-1">
@@ -511,7 +548,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta29">Soy bueno/a para escuchar.</label>
+                                          <label htmlFor="pregunta29">Soy bueno/a para escuchar.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -528,7 +565,7 @@ export const Autoevaluacion = () => {
                                   </tr>
                                   <tr>
                                       <td scope="col-3">
-                                          <label htmlhtmlFor="pregunta30">Tengo un buen o muy buen historial de crédito.</label>
+                                          <label htmlFor="pregunta30">Tengo un buen o muy buen historial de crédito.</label>
                                       </td>
                                       <td scope="col-1">
                                           <input value="SI" className="form-check-input" type="radio"
@@ -547,6 +584,7 @@ export const Autoevaluacion = () => {
 
                           </tbody>
                       </table>
+                      <button onClick={guardar} className='btn btn-primary'>Guardar</button>
                   </form>
               </div>
 
@@ -556,3 +594,4 @@ export const Autoevaluacion = () => {
     </div>
   )
 }
+
