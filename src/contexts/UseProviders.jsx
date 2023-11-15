@@ -7,7 +7,7 @@ import { UserContext } from "./UserContext";
 export const UseProviders= ({children})=>{
     const {usuarios,getUsuarios,cargarUsuario}= UseUsuario();
     const {clientes,getClientes,emprendedorSave,empresarioSave,abrirModalCliente,cerrarModalCliente,visibleModalCliente}= UseCliente()
-    const {procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal}=UseProceso()
+    const {procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal,procesoSave}=UseProceso()
     
 return(<UserContext.Provider value={
     {
@@ -16,7 +16,7 @@ return(<UserContext.Provider value={
         // clientes
         clientes,getClientes,emprendedorSave,empresarioSave,abrirModalCliente,cerrarModalCliente,visibleModalCliente,
         //procesos
-        procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal
+        procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal,procesoSave
 }
 }>
     {children}

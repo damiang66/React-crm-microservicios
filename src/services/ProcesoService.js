@@ -19,3 +19,21 @@ export const procesosFindAll= async()=>{
     console.log(error);
   }
  }
+ export const procesoSave = async(proceso)=>{
+  try {
+    const respuesta = await axios.post(`${url}`,proceso)
+    return respuesta;
+  } catch (error) {
+  console.log(error);  
+  }
+
+ }
+ export const procesoUpdate = async(proceso)=>{
+  try {
+    const respuesta = await axios.put(`${url}/editar/procesoEmprendedor`,proceso)
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
+
+ }

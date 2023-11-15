@@ -1,39 +1,52 @@
 
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { UserContext } from '../../../../contexts/UserContext';
+let procesoGuardado = {
+    cliente:{
 
-export const Autoevaluacion = () => {
-    const procesoInicial={
-    procesosEmprendedor:{
+    },
+    procesoEmprendedor:{
         autoevaluacion:{
             evaluacion:[]
         }
     }
+}
+export const Autoevaluacion = () => {
+    const { getClientes, clientes,procesoSave} = useContext(UserContext);
+    let clienteSeleccionado ={
+  
     }
-    const [proceso,setProceso]=useState(pro)
+
+  
+    const {idCliente} = useParams()
+    useEffect(()=>{
+getClientes()
+ 
+    },[])
+    
+
+ 
+    const [proceso,setProceso]=useState([])
     const guardar=()=>{
         event.preventDefault();
+        
+ clienteSeleccionado = clientes.find(cliente => cliente.id === parseInt(idCliente));
+ procesoGuardado.cliente = clienteSeleccionado
+ procesoGuardado.procesoEmprendedor.autoevaluacion.evaluacion= proceso
+     procesoSave(procesoGuardado)
+   
+
 console.log(proceso);
     }
     const cambio = ({ target }) => {
         const { name, value } = target;
     
-        setProceso((proceso) => {
-            return {
-                ...proceso,
-                procesoEmprendedor: {
-                    ...proceso.procesoEmprendedor,
-                    autoevaluacion: {
-                        ...proceso.procesoEmprendedor.autoevaluacion,
-                        evaluacion:[
-                            value
-                        ]   
-                        
-                        
-                   
-                    }
-                }
-            };
-        });
+       setProceso([
+        ...proceso,
+            value
+       ])
+       console.log(procesoSave);
     };
     
   return (
@@ -56,39 +69,39 @@ console.log(proceso);
                               </tr>
                           </thead>
                           <tbody>
-                              <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[0]} name="evaluacion[0]">
+                              <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluacion[0]} name="evaluacion[0]">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta1">Soy persistente, perseverante.</label>
                                   </td>
                                   <td scope="col-1">
                                       <input value="SI" className="form-check-input" type="radio"
-                                          name="pregunta1" id="pregunta1a" />
+                                          id="pregunta1a" />
                                   </td>
                                   <td scope="col-1">
                                       <input value="NO" className="form-check-input" type="radio"
-                                          name="pregunta1" id="pregunta1b" />
+                                          id="pregunta1b" />
                                   </td>
                                   <td scope="col-1" style={{border:'solid 1px'}}>
                                       <input value="QUIZAS" className="form-check-input" type="radio"
-                                          name="pregunta1" id="pregunta1c" />
+                                          id="pregunta1c" />
                                   </td>
                               </tr>
-                            <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluación[1]} name="evaluacion[1]">
+                            <tr onChange={cambio} value={proceso?.procesoEmprendedor?.autoevaluacion?.evaluacion[1]} name="evaluacion[1]">
                                   <td scope="col-3">
                                       <label htmlFor="pregunta2">Tengo capital o activos para invertir y estoy dispuesto a perder gran
                                           parte de mis ahorros.</label>
                                   </td>
                                   <td scope="col-1">
                                       <input value="SI" className="form-check-input" type="radio"
-                                          name="pregunta2" id="pregunta2a" />
+                                          id="pregunta2a" />
                                   </td>
                                   <td scope="col-1">
                                       <input value="NO" className="form-check-input" type="radio"
-                                          name="pregunta2" id="pregunta2b" />
+                                           id="pregunta2b" />
                                   </td>
                                   <td scope="col-1" style={{border:'solid 1px'}}>
                                       <input value="QUIZAS" className="form-check-input" type="radio"
-                                          name="pregunta2" id="pregunta2c" />
+                                          id="pregunta2c" />
                                   </td>
                                   </tr>
                                   <tr>
