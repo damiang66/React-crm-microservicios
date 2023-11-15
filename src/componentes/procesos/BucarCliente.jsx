@@ -26,7 +26,7 @@ export const BucarCliente = () => {
         )
        clienteSeleccionado= clienteSeleccionado[0]
        if(clienteSeleccionado.tipo== 'emprendedor'){
-        navegar(`/autoevaluacion`)
+        navegar(`/autoevaluacion/${clienteSeleccionado.id}`)
        }else{
         navegar((`/diagnostico`))
        }

@@ -33,6 +33,7 @@ export const UseRouter = () => {
       <Route path="procesos" element={<ProcesosAllPage />} />
       // empresario
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
+      <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
       //emprendedor
       <Route path="diagnostico" element={<Diagnostico />} />
 
