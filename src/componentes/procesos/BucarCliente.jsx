@@ -51,7 +51,7 @@ export const BucarCliente = () => {
   return (
     <div>
       <div className="mb-3">
-        <label htmlFor="disabledTextInput" className="form-label">Buscar Cliente</label>
+        <label htmlhtmlFor="disabledTextInput" className="form-label">Buscar Cliente</label>
         <input onChange={OnChangeFiltro} value={nombre} type="text" name="nombre" className="form-control" placeholder="Buscar cliente" />
       </div>
 
