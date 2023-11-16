@@ -19,9 +19,11 @@ export const procesosFindAll= async()=>{
     console.log(error);
   }
  }
- export const procesoSave = async(proceso)=>{
+ export const ProcesoSave = async(proceso)=>{
   try {
+    console.log(proceso);
     const respuesta = await axios.post(`${url}`,proceso)
+    console.log(respuesta);
     return respuesta;
   } catch (error) {
   console.log(error);  

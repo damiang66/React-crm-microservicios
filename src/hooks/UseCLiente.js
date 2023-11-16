@@ -23,6 +23,7 @@ export const UseCliente = ()=>{
     
     }
     const emprendedorSave= async(emprendedor)=>{
+        console.log(emprendedor);
         try {
            const respuesta = await EmprendedorSave(emprendedor);
           dispatch({

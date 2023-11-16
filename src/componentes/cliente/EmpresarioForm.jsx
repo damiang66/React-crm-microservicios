@@ -43,10 +43,7 @@ export const EmpresarioForm = ()=>{
 
     const guardarEmpresario = (event)=>{
         event.preventDefault();
-        setEmpresario({...empresario,
-            usuario:1,
-            tipo:'empresario'
-        })
+        
         empresarioSave(empresario);
     }
 
