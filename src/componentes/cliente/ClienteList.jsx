@@ -15,7 +15,7 @@ export const ClienteList = ()=>{
     return (<>
     
     <h2>Lista de Clientes</h2>
-    <button onClick={abrir} className="btn btn-primary">Agregar</button>
+    
         <table className="table">
            
             <thead>
@@ -30,8 +30,10 @@ export const ClienteList = ()=>{
                     <th scope="col"></th>
                 </tr>
             </thead>
+            
             <tbody>
             {clientes?.map((u) => (
+                
                 <tr key={u.id}> 
                     
                     <td  scope="row">{u.nombre}</td>
@@ -53,8 +55,18 @@ export const ClienteList = ()=>{
                     <FontAwesomeIcon icon={faPlu} />
                     </td>
                     </tr>
+                    
                 ))}
+<<<<<<< HEAD
             </tbody>
+=======
+                </tbody>
+
+
+
+                
+            
+>>>>>>> aa199346c5f6587ef8bf35926ef3d06a65beef9d
         </table>
     </>)
 }

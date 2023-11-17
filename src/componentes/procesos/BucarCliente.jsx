@@ -26,9 +26,9 @@ export const BucarCliente = () => {
         )
        clienteSeleccionado= clienteSeleccionado[0]
        if(clienteSeleccionado.tipo== 'emprendedor'){
-        navegar(`/autoevaluacion`)
+        navegar(`/autoevaluacion/${clienteSeleccionado.id}`)
        }else{
-        navegar((`/diagnostico`))
+        navegar((`/conceptosgenerales/${clienteSeleccionado.id}`))
        }
       }
     } catch (error) {
@@ -51,7 +51,7 @@ export const BucarCliente = () => {
   return (
     <div>
       <div className="mb-3">
-        <label htmlFor="disabledTextInput" className="form-label">Buscar Cliente</label>
+        <label htmlhtmlFor="disabledTextInput" className="form-label">Buscar Cliente</label>
         <input onChange={OnChangeFiltro} value={nombre} type="text" name="nombre" className="form-control" placeholder="Buscar cliente" />
       </div>
 

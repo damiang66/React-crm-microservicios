@@ -17,7 +17,7 @@ export const ClienteReducer = (state=[],action)=>{
                         };
                     }
                     return p;
-                })    
+                })
         default:
             break;
     }

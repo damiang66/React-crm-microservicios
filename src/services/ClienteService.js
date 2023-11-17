@@ -29,3 +29,12 @@ export const EmprendedorSave= async(emprendedor)=>{
         return error;
     }
 }
+export const EmpresarioSave= async(empresario)=>{
+    try {
+        const respuesta = await axios.post(`${url}/empresario`,empresario)
+        return respuesta;
+
+    } catch (error) {
+        return error;
+    }
+}

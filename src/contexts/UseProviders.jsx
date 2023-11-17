@@ -4,6 +4,7 @@ import { UseUsuario } from "../hooks/UseUsuario"
 import { UserContext } from "./UserContext";
 
 
+<<<<<<< HEAD
 export const UseProviders = ({ children }) => {
     const { usuarios, getUsuarios, cargarUsuario } = UseUsuario();
     const {//VARIABLES
@@ -39,5 +40,23 @@ export const UseProviders = ({ children }) => {
         }
     }>
         {children}
+=======
+export const UseProviders= ({children})=>{
+    const {usuarios,getUsuarios,cargarUsuario}= UseUsuario();
+    const {clientes,getClientes,emprendedorSave,empresarioSave,abrirModalCliente,cerrarModalCliente,visibleModalCliente}= UseCliente()
+    const {procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal,procesoSave}=UseProceso()
+    
+return(<UserContext.Provider value={
+    {
+        //usuarios
+        usuarios,getUsuarios,cargarUsuario,
+        // clientes
+        clientes,getClientes,emprendedorSave,empresarioSave,abrirModalCliente,cerrarModalCliente,visibleModalCliente,
+        //procesos
+        procesos,getProcesos,visibleBuscarCliente,abrirModal,cerrarModal,procesoSave
+}
+}>
+    {children}
+>>>>>>> aa199346c5f6587ef8bf35926ef3d06a65beef9d
     </UserContext.Provider>)
 }

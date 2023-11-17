@@ -3,14 +3,18 @@ import { NavBar } from "../componentes/NavBar"
 import { UsuarioListar } from "../componentes/Usuario/UsuarioListar"
 import { Main } from "../componentes/Main"
 import { UsuarioForm } from "../componentes/Usuario/UsuarioForm"
-import { ClienteList } from "../componentes/cliente/ClienteList"
 import { CLienteEleccion } from "../componentes/cliente/ClienteEleccion"
 import { EmprendedorForm } from "../componentes/cliente/EmprendedorForm"
 import { EmpresarioForm } from "../componentes/cliente/EmpresarioForm"
-import { ListaProceso } from "../componentes/procesos/ListaProceso"
 import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
 import { Autoevaluacion } from "../componentes/procesos/emprendedor/autoevaluacion/Autoevaluacion"
-import { Diagnostico } from "../componentes/procesos/empresario/DIagnostico"
+import { ClienteSavePage } from "../page/Cliente/ClienteSavePage"
+<<<<<<< HEAD
+import { Conceptosgenerales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/ConceptosGenerales"
+import { GestionEstrategica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionEstrategica"
+=======
+import { ActividadesClaves } from "../componentes/procesos/emprendedor/canvas/ActividadesClaves"
+>>>>>>> f46913d0d94f3f8c694d36da9a604f696dd9dece
 
 export const UseRouter = () => {
   return (<>
@@ -24,17 +28,27 @@ export const UseRouter = () => {
       <Route path="usuarios/form" element={<UsuarioForm />} />
       <Route path="usuarios/form/:id" element={<UsuarioForm />} />
       // clientes
-      <Route path="clientes" element={<ClienteList />} />
+      <Route path="clientes" element={<ClienteSavePage />} />
       <Route path="eleccion/clientes" element={<CLienteEleccion />} />
       <Route path="emprendedor" element={<EmprendedorForm />} />
       <Route path="empresario" element={<EmpresarioForm />} />
-      <Route path="empresario" element={<EmpresarioForm />} />
       //procesos
       <Route path="procesos" element={<ProcesosAllPage />} />
-      // empresario
+      // emprendedor
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
+      <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
+<<<<<<< HEAD
       //emprendedor
+      <Route path="conceptosgenerales" element={<Conceptosgenerales />} />
+      <Route path="conceptosgenerales/:idCliente" element={<Conceptosgenerales />} />
+      <Route path="gestionEstrategica/:idCliente" element={<GestionEstrategica />} />
+=======
+        // canvas
+     <Route path="actividadesClaves/:id" element={<ActividadesClaves />} />
+      //empresario
       <Route path="diagnostico" element={<Diagnostico />} />
+>>>>>>> f46913d0d94f3f8c694d36da9a604f696dd9dece
+
 
     </Routes>
   </>)
