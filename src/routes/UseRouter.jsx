@@ -3,15 +3,14 @@ import { NavBar } from "../componentes/NavBar"
 import { UsuarioListar } from "../componentes/Usuario/UsuarioListar"
 import { Main } from "../componentes/Main"
 import { UsuarioForm } from "../componentes/Usuario/UsuarioForm"
-import { ClienteList } from "../componentes/cliente/ClienteList"
 import { CLienteEleccion } from "../componentes/cliente/ClienteEleccion"
 import { EmprendedorForm } from "../componentes/cliente/EmprendedorForm"
 import { EmpresarioForm } from "../componentes/cliente/EmpresarioForm"
-import { ListaProceso } from "../componentes/procesos/ListaProceso"
 import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
 import { Autoevaluacion } from "../componentes/procesos/emprendedor/autoevaluacion/Autoevaluacion"
-import { Diagnostico } from "../componentes/procesos/empresario/DIagnostico"
 import { ClienteSavePage } from "../page/Cliente/ClienteSavePage"
+import { Conceptosgenerales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/ConceptosGenerales"
+import { GestionEstrategica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionEstrategica"
 
 export const UseRouter = () => {
   return (<>
@@ -35,7 +34,9 @@ export const UseRouter = () => {
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
       <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
       //emprendedor
-      <Route path="diagnostico" element={<Diagnostico />} />
+      <Route path="conceptosgenerales" element={<Conceptosgenerales />} />
+      <Route path="conceptosgenerales/:idCliente" element={<Conceptosgenerales />} />
+      <Route path="gestionEstrategica/:idCliente" element={<GestionEstrategica />} />
 
     </Routes>
   </>)

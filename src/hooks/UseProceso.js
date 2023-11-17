@@ -23,13 +23,19 @@ export const UseProceso = ()=>{
         }
     }
     const procesoSave = async(proceso)=>{
-   
+        
         console.log(proceso);
         try {
-            
-             const  response = await ProcesoSave(proceso);
-            
-            
+        if(proceso.id){
+           const response = await ProcesoUpdate(proceso)  
+          }else{
+            const  response = await ProcesoSave(proceso);
+          }
+           
+          dispatch({
+              type:(usuario.id===0)?'addProceso':'updateProceso',
+              payload: response.data
+                  })
         } catch (error) {
             console.log(error);
         }
