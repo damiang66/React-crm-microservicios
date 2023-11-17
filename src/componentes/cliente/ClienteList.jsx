@@ -27,6 +27,7 @@ export const ClienteList = ()=>{
                     <th scope="col">Tipo</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,12 +49,11 @@ export const ClienteList = ()=>{
                     <td>
                         <button className="btn btn-danger">Eliminar</button>
                     </td>
+                    <td>
+                    <FontAwesomeIcon icon={faPlu} />
+                    </td>
                     </tr>
                 ))}
-
-
-
-                
             </tbody>
         </table>
     </>)
