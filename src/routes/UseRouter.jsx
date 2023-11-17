@@ -12,6 +12,7 @@ import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
 import { Autoevaluacion } from "../componentes/procesos/emprendedor/autoevaluacion/Autoevaluacion"
 import { Diagnostico } from "../componentes/procesos/empresario/DIagnostico"
 import { ClienteSavePage } from "../page/Cliente/ClienteSavePage"
+import { ActividadesClaves } from "../componentes/procesos/emprendedor/canvas/ActividadesClaves"
 
 export const UseRouter = () => {
   return (<>
@@ -31,11 +32,14 @@ export const UseRouter = () => {
       <Route path="empresario" element={<EmpresarioForm />} />
       //procesos
       <Route path="procesos" element={<ProcesosAllPage />} />
-      // empresario
+      // emprendedor
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
       <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
-      //emprendedor
+        // canvas
+     <Route path="actividadesClaves/:id" element={<ActividadesClaves />} />
+      //empresario
       <Route path="diagnostico" element={<Diagnostico />} />
+
 
     </Routes>
   </>)
