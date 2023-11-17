@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import { procesoUpdate, procesosFindAll } from "../services/ProcesoService";
+import { ProcesoSave, procesoUpdate, procesosFindAll } from "../services/ProcesoService";
 import { ProcesoReducer } from "../reducer/ProcesoReducer";
 
 export const UseProceso = ()=>{
@@ -22,19 +22,20 @@ export const UseProceso = ()=>{
             console.log(error);
         }
     }
-    const procesoSave =async (proceso)=>{
-        let response
+    const procesoSave = async(proceso)=>{
+        
+        console.log(proceso);
         try {
-            if(proceso.id){
-              response = await procesoUpdate(proceso)  
-            }else{
-                response = await procesoSave(proceso);
-            }
-             
-            dispatch({
-                type:(usuario.id===0)?'addProceso':'updateProceso',
-                payload: response.data
-                    })
+        if(proceso.id){
+           const response = await ProcesoUpdate(proceso)  
+          }else{
+            const  response = await ProcesoSave(proceso);
+          }
+           
+          dispatch({
+              type:(usuario.id===0)?'addProceso':'updateProceso',
+              payload: response.data
+                  })
         } catch (error) {
             console.log(error);
         }
