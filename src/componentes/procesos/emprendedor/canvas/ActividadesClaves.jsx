@@ -27,7 +27,7 @@ export const ActividadesClaves = () => {
         p.id===id
     }))
    console.log(seleccion);
-   seleccion.
+   seleccion
    }
    useEffect(()=>{
     getProcesos()

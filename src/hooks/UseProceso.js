@@ -1,8 +1,11 @@
 import { useReducer, useState } from "react";
-import { ProcesoSave, procesoUpdate, procesosFindAll } from "../services/ProcesoService";
+import { ProcesoSave, ProcesoUpdate, ProcesosFindAll } from "../services/ProcesoService";
 import { ProcesoReducer } from "../reducer/ProcesoReducer";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const UseProceso = ()=>{
+    const navegar = useNavigate()
     const[procesos,dispatch]= useReducer(ProcesoReducer,[]);
     const[visibleBuscarCliente,setVisibleBuscarCliente]=useState(false);
     const abrirModal = ()=>{
@@ -13,7 +16,7 @@ export const UseProceso = ()=>{
     }
     const getProcesos = async()=>{
         try {
-            const respuesta = await procesosFindAll();
+            const respuesta = await ProcesosFindAll();
             dispatch({
                 type:"listaProceso",
                 payload:respuesta.data
@@ -22,20 +25,38 @@ export const UseProceso = ()=>{
             console.log(error);
         }
     }
-    const procesoSave = async(proceso)=>{
+    const procesoSave = async(proceso, urlProceso)=>{
         
         console.log(proceso);
+        let response
         try {
         if(proceso.id){
-           const response = await ProcesoUpdate(proceso)  
+            response = await ProcesoUpdate(proceso)  
           }else{
-            const  response = await ProcesoSave(proceso);
+              response = await ProcesoSave(proceso);
           }
            
           dispatch({
-              type:(usuario.id===0)?'addProceso':'updateProceso',
+              type:(proceso.id===0)?'addProceso':'updateProceso',
               payload: response.data
                   })
+            
+                  Swal.fire({
+                    title: "Desea continuar con el siguiente formulario?",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Continuar",
+                    denyButtonText: `Volver a la lista de procesos`
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        navegar((`/${urlProceso}/${response.data.id}`))
+                    } else if (result.isDenied) {
+                        navegar((`/procesos`))
+                    }
+                  }); 
+
         } catch (error) {
             console.log(error);
         }
