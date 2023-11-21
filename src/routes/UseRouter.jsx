@@ -12,7 +12,8 @@ import { ClienteSavePage } from "../page/Cliente/ClienteSavePage"
 import { Conceptosgenerales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/ConceptosGenerales"
 import { GestionEstrategica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionEstrategica"
 import { ActividadesClaves } from "../componentes/procesos/emprendedor/canvas/ActividadesClaves"
-import { GestionOperacional } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionOperacional"
+import { GestionProductividad } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionProductividad"
+import { GestionOperacional } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestinOperacional"
 
 export const UseRouter = () => {
   return (<>
@@ -42,6 +43,7 @@ export const UseRouter = () => {
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
       <Route path="conceptosGenerales/:idCliente" element={<Conceptosgenerales />} />
       <Route path="gestionEstrategica/:idProceso" element={<GestionEstrategica />} />
+      <Route path="gestionProductividad/:idProceso" element={<GestionProductividad />} />
       <Route path="gestionOperacional/:idProceso" element={<GestionOperacional />} />
 
 

@@ -43,7 +43,7 @@ const guardar = (event) => {
   console.log(proceso);
   console.log(nuevoProcesoGuardado);
   nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica = proceso
-  procesoSave(nuevoProcesoGuardado, 'gestionOperacional')
+  procesoSave(nuevoProcesoGuardado, 'gestionProductividad')
   
   
   
