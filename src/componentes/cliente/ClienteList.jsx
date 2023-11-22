@@ -35,38 +35,21 @@ export const ClienteList = ()=>{
             {clientes?.map((u) => (
                 
                 <tr key={u.id}> 
-                    
                     <td  scope="row">{u.nombre}</td>
-                    
                     <td>{u.apellido}</td>
-                    
                     <td>{u.dni}</td>
-                    
                     <td>{u.municipio?.nombre}</td>
                     <td>{u.tipo}</td>
                     <td>
-                        {/*<Link to={`/usuarios/form/${u.id}`} className="btn btn-success">Editar</Link> */}
-                       
+                    <Link className="btn btn-success btn-sm" to={'/'}>Editar </Link>
                     </td>
                     <td>
-                        <button className="btn btn-danger">Eliminar</button>
-                    </td>
-                    <td>
-                    <FontAwesomeIcon icon={faPlu} />
+                        <button className="btn btn-danger btn-sm">Eliminar</button>
                     </td>
                     </tr>
                     
                 ))}
-<<<<<<< HEAD
             </tbody>
-=======
-                </tbody>
-
-
-
-                
-            
->>>>>>> aa199346c5f6587ef8bf35926ef3d06a65beef9d
         </table>
     </>)
 }
