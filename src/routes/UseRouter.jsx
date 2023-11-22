@@ -3,16 +3,17 @@ import { NavBar } from "../componentes/NavBar"
 import { UsuarioListar } from "../componentes/Usuario/UsuarioListar"
 import { Main } from "../componentes/Main"
 import { UsuarioForm } from "../componentes/Usuario/UsuarioForm"
-import { ClienteList } from "../componentes/cliente/ClienteList"
 import { CLienteEleccion } from "../componentes/cliente/ClienteEleccion"
 import { EmprendedorForm } from "../componentes/cliente/EmprendedorForm"
 import { EmpresarioForm } from "../componentes/cliente/EmpresarioForm"
-import { ListaProceso } from "../componentes/procesos/ListaProceso"
 import { ProcesosAllPage } from "../page/Procesos/ProcesosAllPage"
 import { Autoevaluacion } from "../componentes/procesos/emprendedor/autoevaluacion/Autoevaluacion"
-import { Diagnostico } from "../componentes/procesos/empresario/DIagnostico"
 import { ClienteSavePage } from "../page/Cliente/ClienteSavePage"
+import { Conceptosgenerales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/ConceptosGenerales"
+import { GestionEstrategica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionEstrategica"
 import { ActividadesClaves } from "../componentes/procesos/emprendedor/canvas/ActividadesClaves"
+import { GestionProductividad } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionProductividad"
+import { GestionOperacional } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestinOperacional"
 
 export const UseRouter = () => {
   return (<>
@@ -37,8 +38,13 @@ export const UseRouter = () => {
       <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
         // canvas
      <Route path="actividadesClaves/:id" element={<ActividadesClaves />} />
-      //empresario
-      <Route path="diagnostico" element={<Diagnostico />} />
+     //empresario
+     //diagnostico
+      <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
+      <Route path="conceptosGenerales/:idCliente" element={<Conceptosgenerales />} />
+      <Route path="gestionEstrategica/:idProceso" element={<GestionEstrategica />} />
+      <Route path="gestionProductividad/:idProceso" element={<GestionProductividad />} />
+      <Route path="gestionOperacional/:idProceso" element={<GestionOperacional />} />
 
 
     </Routes>

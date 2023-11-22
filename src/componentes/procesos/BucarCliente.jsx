@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../contexts/UserContext';
-import { comprobarCliente } from '../../services/ProcesoService';
+import { ComprobarCliente} from '../../services/ProcesoService';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -17,7 +17,7 @@ export const BucarCliente = () => {
   const agregarProceso = async (idCliente) => {
     let clienteSeleccionado;
     try {
-      const respuesta = await comprobarCliente(idCliente)
+      const respuesta = await ComprobarCliente(idCliente)
       if (respuesta.data) {
         Swal.fire('Error', 'El cliente ya contiene un proceso asignado', 'warning')
       } else {
@@ -28,7 +28,7 @@ export const BucarCliente = () => {
        if(clienteSeleccionado.tipo== 'emprendedor'){
         navegar(`/autoevaluacion/${clienteSeleccionado.id}`)
        }else{
-        navegar((`/diagnostico`))
+        navegar((`/conceptosGenerales/${clienteSeleccionado.id}`))
        }
       }
     } catch (error) {

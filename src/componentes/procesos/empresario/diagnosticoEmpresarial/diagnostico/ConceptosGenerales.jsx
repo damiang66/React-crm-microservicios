@@ -1,4 +1,77 @@
-export const Diagnostico = () => {
+
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { UserContext } from '../../../../../contexts/UserContext';
+import Swal from "sweetalert2";
+
+let procesoGuardado = {
+    cliente: {
+
+    },
+    procesoEmpresario: {
+        diagnosticoEmpresarial: {
+            diagnostico:{
+                conceptosGenerales:[
+                    
+                ]
+            }
+        }
+    }
+}
+
+
+
+export const Conceptosgenerales = () => {
+
+    const navegar = useNavigate()
+
+    const { getClientes, clientes, procesoSave } = useContext(UserContext);
+
+
+    const { idCliente } = useParams()
+
+    useEffect(() => {
+        getClientes()
+
+    }, [idCliente])
+
+
+    const [proceso, setProceso] = useState([])
+    const guardar = (event) => {
+        console.log('guardar');
+        event.preventDefault();
+
+        const clienteSeleccionado = clientes.find(cliente => cliente.id === parseInt(idCliente));
+        const nuevoProcesoGuardado = { ...procesoGuardado };
+        nuevoProcesoGuardado.cliente = clienteSeleccionado
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.conceptosGenerales = proceso
+        console.log(proceso);
+        console.log(nuevoProcesoGuardado);
+        procesoSave(nuevoProcesoGuardado, 'gestionEstrategica')
+        
+        
+          
+    }
+
+
+    const onInputChangeConceptosGenerales = ({ target }) => {
+         const { name, value } = target;
+    const [property, index] = name.split('_'); 
+
+    setProceso(proceso => {
+        const updatedConceptosGenerales = [...proceso];
+        const concepto = updatedConceptosGenerales[index] || {};
+
+       
+        concepto[property] = value;
+
+        updatedConceptosGenerales[index] = concepto;
+        return updatedConceptosGenerales;
+    });
+       
+    };
+
+
     return (<>
 
         <div className="col-10">
@@ -17,21 +90,21 @@ export const Diagnostico = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr >
                                     <td style={{ width: '3%' }}>1</td>
                                     <td style={{ width: '70%' }}>
                                         <label>
                                             ¿Cumple con los documentos y registros necesarios legalmente (comerciales, tributarios, uso del suelo, registro Invima, concepto sanitario, concepto bomberos, licencia ambiental)?
                                         </label>
                                     </td>
-                                    <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d0" aria-label="Default select example" id="d0">
+                                    <td name="diagnosticoEnum" style={{ width: '3%' }} className="diagnosticoEnum0">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_0" aria-label="Default select example" id="d0" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
-                                    <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o0" rows="1" name="observaciones1" placeholder=""></textarea>
+                                    <td name="observaciones" style={{ width: '20%' }}>
+                                       <textarea className="form-control" id="oobservaciones_0" rows="1" name="observaciones_0" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -41,14 +114,14 @@ export const Diagnostico = () => {
                                             ¿Cumple con todos los requisitos legales vigentes relacionados con el pago de la seguridad laboral del personal (seguridad social y pensiones administración de riesgos profesionales, fondos de cesantías)?
                                         </label>
                                     </td>
-                                    <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d1" id="d1" aria-label="Default select example">
+                                    <td style={{ width: '3%' }} className="diagnosticoEnum1">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_1" id="d1" aria-label="Default select example" onChange={onInputChangeConceptosGenerales}>
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o1" rows="1" name="o1" placeholder=""></textarea>
+                                        <textarea className="form-control" id="observaciones_1" rows="1" name="observaciones_1" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -59,13 +132,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d2" id="d2" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_2" id="d2" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o2" rows="1" name="o2" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_2" rows="1" name="observaciones_2" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -76,13 +149,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d3" id="d3" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_3" id="d3" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o3" id="o3" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_3" rows="1" name="observaciones_3" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -93,13 +166,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d4" id="d4" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_4" id="d4" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o4" id="o4" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_4" rows="1" name="observaciones_4" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,13 +183,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d5" id="d5" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_5" id="d5" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o5" id="o5" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_5" rows="1" name="observaciones_5" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,13 +200,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d6" id="d6" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_6" id="d6" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o6" id="o6" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_6" rows="1" name="observaciones_6" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -144,13 +217,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d7" id="d7" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_7" id="d7" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o7" id="o7" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_7" rows="1" name="observaciones_7" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,13 +234,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d8" id="d8" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_8" id="d8" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o8" id="o8" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_8" rows="1" name="observaciones_8" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -178,13 +251,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d9" id="d9" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_9" id="d9" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o9" id="o9" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_9" rows="1" name="observaciones_9" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -195,13 +268,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d10" id="d10" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_10" id="d10" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o10" id="o10" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_10" rows="1" name="observaciones_10" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -212,13 +285,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d11" id="d11" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_11" id="d11" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o11" id="o11" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_11" rows="1" name="observaciones_11" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -229,13 +302,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d12" id="d12" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_12" id="d12" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" name="o12" id="o12" rows="1" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_12" rows="1" name="observaciones_12" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -246,13 +319,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d13" id="d13" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_13" id="d13" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o13" rows="1" name="13" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_13" rows="1" name="observaciones_13" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -263,13 +336,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d14" id="d14" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_14" id="d14" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o14" rows="1" name="o14" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_14" rows="1" name="observaciones_14" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -280,13 +353,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d15" id="d15" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_15" id="d15" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o15" rows="1" name="o15" placeholder=""></textarea>
+                                    <textarea className="form-control" id="observaciones_15" rows="1" name="observaciones_15" placeholder="" onChange={onInputChangeConceptosGenerales}></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -297,13 +370,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d16" id="d16" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_16" id="d16" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o16" rows="1" name="o16" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o16" rows="1" name="observaciones_16" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -314,13 +387,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d17" id="d17" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_17" id="d17" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o17" rows="1" name="o17" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o17" rows="1" name="observaciones_17" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -331,13 +404,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d18" id="d18" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_18" id="d18" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o18" rows="1" name="o18" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o18" rows="1" name="observaciones_18" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -348,13 +421,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d19" id="d19" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_19" id="d19" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o19" rows="1" name="o19" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o19" rows="1" name="observaciones_19" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -365,13 +438,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d20" id="d20" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_20" id="d20" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o20" rows="1" name="o20" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o20" rows="1" name="observaciones_20" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -382,13 +455,13 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d21" id="d21" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_21" id="d21" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o21" rows="1" name="o21" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o21" rows="1" name="observaciones_21" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -399,18 +472,19 @@ export const Diagnostico = () => {
                                         </label>
                                     </td>
                                     <td style={{ width: '3%' }} className="mantener">
-                                        <select className="form-select form-select-sm" name="d22" id="d22" aria-label="Default select example">
+                                        <select className="form-select form-select-sm" name="diagnosticoEnum_22" id="d22" aria-label="Default select example" onChange={onInputChangeConceptosGenerales} >
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
                                     </td>
                                     <td style={{ width: '20%' }}>
-                                        <textarea className="form-control" id="o22" rows="1" name="o22" placeholder=""></textarea>
+                                        <textarea className="form-control" id="o22" rows="1" name="observaciones_22" placeholder="" onChange={onInputChangeConceptosGenerales} ></textarea>
                                     </td>
                                 </tr>
 
                             </tbody>
                         </table>
+                        <button onClick={guardar} className='btn btn-primary'>Guardar</button>
                     </form>
                 </div>
             </div>
