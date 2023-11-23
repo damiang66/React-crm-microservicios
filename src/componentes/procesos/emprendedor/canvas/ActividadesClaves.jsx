@@ -40,18 +40,20 @@ export const ActividadesClaves = () => {
     </div>
         <form action="">
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Actividad Principal</label>
+                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Actividad Principal</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.actividadPrincipal} name="actividadPrincipal" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Comunicacion Marketing</label>
+                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Comunicacion Marketing</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.comunicacionMarketing} name="comunicacionMarketing" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Post Venta</label>
+                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Post Venta</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.postVenta} name="postVenta" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
+
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Otros</label>
+
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.otros} name="otros" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             
             <button onClick={guardar} className="btn btn-primary">Guardar</button>

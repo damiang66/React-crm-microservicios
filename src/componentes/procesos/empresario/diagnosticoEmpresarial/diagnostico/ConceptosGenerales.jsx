@@ -127,7 +127,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>3</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Lleva libros de contabilidad, actas, de reformas, y de información legal? ¿se encuentran al día y debidamente registrados y archivados?
                                         </label>
                                     </td>
@@ -144,7 +144,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>4</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Tiene definidas las responsabilidades y funciones de cada puesto de trabajo o cargos que desempeñan cada uno de los integrantes de la empresa?
                                         </label>
                                     </td>
@@ -161,7 +161,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>5</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa cuenta con un reglamento interno de trabajo?
                                         </label>
                                     </td>
@@ -178,7 +178,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>6</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Cuentan con manual de procesos?
                                         </label>
                                     </td>
@@ -195,7 +195,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>7</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Se tienen establecidas claramente la misión, visión, valores corporativos y política de calidad de la empresa?
                                         </label>
                                     </td>
@@ -212,7 +212,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>8</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Se tienen indicadores: financieros, comerciales, producción, calidad?
                                         </label>
                                     </td>
@@ -229,7 +229,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>9</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Tiene claramente definido el producto y el cliente hacia el cual está dirigido?
                                         </label>
                                     </td>
@@ -246,7 +246,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>10</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Ha analizado la competencia y el entorno en general (productos sustitutos, competidores potenciales, proveedores, clientes)?
                                         </label>
                                     </td>
@@ -263,7 +263,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>11</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa cuenta con una imagen corporativa?
                                         </label>
                                     </td>
@@ -280,7 +280,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>12</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa dispone de un portafolio de productos/servicios suficientemente?
                                         </label>
                                     </td>
@@ -297,7 +297,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>13</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa cuenta con metas (comerciales - financieras), medibles y verificables en un plazo de tiempo definido, con asignación del responsable de su cumplimiento?
                                         </label>
                                     </td>
@@ -314,7 +314,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>14</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa tiene definidas estrategias para comercializar sus servicios?
                                         </label>
                                     </td>
@@ -331,7 +331,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>15</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa cuenta con instalaciones y está ubicada geográficamente permitiendo el fácil acceso a clientes y proveedores?
                                         </label>
                                     </td>
@@ -348,7 +348,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>16</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Cuenta con herramientas y maquinaria necesaria para la fabricación de sus productos o prestación de servicios?
                                         </label>
                                     </td>
@@ -365,7 +365,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>17</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Se cuenta con áreas organizadas para las fabricación de los productos o servicios, almacenamiento de materias primas, productos en proceso y productos terminados?
                                         </label>
                                     </td>
@@ -382,7 +382,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>18</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Cuenta con la disponibilidad de mano de obra calificada para la fabricación de productos o prestación de servicios?
                                         </label>
                                     </td>
@@ -416,7 +416,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>20</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La disponibilidad de materia prima está garantizada a mediano y largo plazo?
                                         </label>
                                     </td>
@@ -450,7 +450,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>22</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿La empresa realiza presupuestos?
                                         </label>
                                     </td>
@@ -467,7 +467,7 @@ export const Conceptosgenerales = () => {
                                 <tr>
                                     <td style={{ width: '3%' }}>23</td>
                                     <td style={{ width: '70%' }}>
-                                        <label htmlFor="pregunta1">
+                                        <label htmlhtmlFor="pregunta1">
                                             ¿Posee Cuenta de Ahorro o Cuenta Corriente?
                                         </label>
                                     </td>

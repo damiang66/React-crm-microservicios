@@ -4,19 +4,6 @@ import { useParams } from "react-router-dom";
 
 
 
-let procesoGuardado = {
-    procesoEmpresario: {
-        diagnosticoEmpresarial: {
-            diagnostico: {
-                conceptosGenerales: [],
-                gestionEstrategica: [],
-                gestionProductividad: [],
-            }
-        }
-    }
-}
-
-
 
 export const GestionProductividad = () => {
 
@@ -81,7 +68,7 @@ export const GestionProductividad = () => {
                                 <strong>Plan Estratégico</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa cuenta con un plan estratégico (Metas corporativas, Visión, Misión, Estrategia y Objetivos)?
                                 </label>
                             </td>
@@ -101,7 +88,7 @@ export const GestionProductividad = () => {
                                 <strong>Estructura Organizacional</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa cuenta con una estructura organizacional (Organigrama, Manual de funciones y responsabilidades)?
                                 </label>
                             </td>
@@ -121,7 +108,7 @@ export const GestionProductividad = () => {
                                 <strong>Competencias</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa evalúa las competencias y habilidades periódicamente de sus trabajadores?
                                 </label>
                             </td>
@@ -141,7 +128,7 @@ export const GestionProductividad = () => {
                                 <strong>Cumplimiento de Normas</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿En la empresa se cumplen las normas Tributarias, Contables, Laborales y Comerciales?
                                 </label>
                             </td>
@@ -161,7 +148,7 @@ export const GestionProductividad = () => {
                                 <strong>Planeación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa realiza grupos de trabajo para planear las estrategias del mes (comerciales, marketing)?
                                 </label>
                             </td>
@@ -181,7 +168,7 @@ export const GestionProductividad = () => {
                                 <strong>Manejo de Indicadores</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿En la empresa se manejan indicadores de Gestión y Productividad?
                                 </label>
                             </td>
@@ -201,7 +188,7 @@ export const GestionProductividad = () => {
                                 <strong>Proceso de Selección</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa cuenta con procesos de selección de nuevos empleados (pruebas psicológicas, psicotécnicas y de conocimiento)?
                                 </label>
                             </td>
@@ -221,7 +208,7 @@ export const GestionProductividad = () => {
                                 <strong>Procesos de Inducción y Capacitación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa realiza procesos de inducción, reinducción y capacitación a los nuevos y antiguos empleados?
                                 </label>
                             </td>
@@ -241,7 +228,7 @@ export const GestionProductividad = () => {
                                 <strong>Seguridad y Salud en el Trabajo</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa cuenta con Seguridad y Salud en el Trabajo (equipo de trabajo, manuales, procedimientos)?
                                 </label>
                             </td>
@@ -261,7 +248,7 @@ export const GestionProductividad = () => {
                                 <strong>Incentivos</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa maneja incentivos y recompensas por productividad y ventas y cumplimientos de metas?
                                 </label>
                             </td>
@@ -281,7 +268,7 @@ export const GestionProductividad = () => {
                                 <strong>Comunicación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿Cuentan con canales de comunicación ágiles, asertivos y oportunos los diferentes niveles de personal de la compañía (directivos, técnicos, administrativos, otros)?
                                 </label>
                             </td>
@@ -301,7 +288,7 @@ export const GestionProductividad = () => {
                                 <strong>Desempeño</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿Realizan evaluación de desempeño a todos los colaboradores de la empresa?
                                 </label>
                             </td>
@@ -321,7 +308,7 @@ export const GestionProductividad = () => {
                                 <strong>Organizacional</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlFor="pregunta1">
+                                <label htmlhtmlFor="pregunta1">
                                     ¿La empresa hace medición del clima organizacional?
                                 </label>
                             </td>

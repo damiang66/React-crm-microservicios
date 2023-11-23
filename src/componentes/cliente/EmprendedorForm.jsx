@@ -51,15 +51,15 @@ export const EmprendedorForm = () => {
 
         <form onSubmit={guardarEmprendedor} >
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
                 <input onChange={onInputChange} value={emprendedor?.nombre} type="text" name="nombre" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
                 <input onChange={onInputChange} value={emprendedor?.apellido} name="apellido" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
                 <input onChange={onInputChange} value={emprendedor?.dni} name="dni" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
@@ -93,7 +93,7 @@ export const EmprendedorForm = () => {
                 </select>
             </div>
             <div className="mb-3">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Victima</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Victima</label>
                 <select name="victima" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -102,7 +102,7 @@ export const EmprendedorForm = () => {
                 </select>
             </div>
             <div className="mb-3">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Desplazamiento</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Desplazamiento</label>
                 <select name="desplazamiento" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -111,7 +111,7 @@ export const EmprendedorForm = () => {
                 </select>
             </div>
             <div className="mb-3">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Discapacidad</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Discapacidad</label>
                 <select name="discapacidad" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -122,20 +122,20 @@ export const EmprendedorForm = () => {
 
 
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
                 <input onChange={onInputChange} value={emprendedor?.telefono} name="telefono" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
                 <input onChange={onInputChange} value={emprendedor?.email} name="email" type="email" className="form-control" aria-describedby="emailHelp" />
             </div>
 
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Fecha de Nacimiento</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Fecha de Nacimiento</label>
                 <input onChange={onInputChange} value={emprendedor?.fechaNacimiento} name="fechaNacimiento" type="date" className="form-control" />
             </div>
             <div className="mb-3">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Municipio</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Municipio</label>
             <select  onChange={onInputChange} value={emprendedor?.municipio?.id}  name="municipio" className="form-select" aria-label="Default select example">
             <option value="">Seleccionar municipios</option>
             {municipio.map(m=>(
@@ -148,15 +148,15 @@ export const EmprendedorForm = () => {
                </select>
                </div>
                <div className="mb-3">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Direccion</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Direccion</label>
                 <input onChange={onInputChange} value={emprendedor?.direccion} name="direccion" type="text" className="form-control" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Idea de negocio</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Idea de negocio</label>
                 <input onChange={onInputChange} value={emprendedor?.ideaNegocio} name="ideaNegocio" type="text" className="form-control" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Producto</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Producto</label>
                 <input onChange={onInputChange} value={emprendedor?.producto} name="producto" type="text" className="form-control" />
             </div>
 
