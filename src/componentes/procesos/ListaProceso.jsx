@@ -3,6 +3,7 @@ import { UserContext } from "../../contexts/UserContext"
 
 export const ListaProceso = ()=>{
     const {procesos}= useContext(UserContext);
+    console.log(procesos);
     return (<>
     
         <table className="table">
@@ -18,13 +19,10 @@ export const ListaProceso = ()=>{
             </thead>
             <tbody>
             {procesos?.map((p) => (
+             
                 <tr key={p.id}> 
-                    
-                    <td  scope="row">{p.cliente.nombre}</td>
-                    
-                    <td>{p.cliente.tipo}</td>
-                    
-                
+                    <td  scope="row">{p?.cliente?.nombre}</td>
+                    <td>{p?.cliente?.tipo}</td>
                     <td>
                         {/*<Link to={`/usuarios/form/${u.id}`} className="btn btn-success">Editar</Link> */}
                        
