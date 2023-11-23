@@ -13,7 +13,13 @@ import { Conceptosgenerales } from "../componentes/procesos/empresario/diagnosti
 import { GestionEstrategica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionEstrategica"
 import { ActividadesClaves } from "../componentes/procesos/emprendedor/canvas/ActividadesClaves"
 import { GestionProductividad } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionProductividad"
-import { GestionOperacional } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestinOperacional"
+import { GestionOperacional } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionOperacional"
+import { GestionCalidad } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionCalidad"
+import { GestionInnovacion } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionInnovacion"
+import { GestionFinanciera } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionFinanciera"
+import { GestionLogistica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionLogistica"
+import { GestionDigital } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionDigital"
+import { GestionAmbiental } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionAmbiental"
 
 export const UseRouter = () => {
   return (<>
@@ -45,6 +51,12 @@ export const UseRouter = () => {
       <Route path="gestionEstrategica/:idProceso" element={<GestionEstrategica />} />
       <Route path="gestionProductividad/:idProceso" element={<GestionProductividad />} />
       <Route path="gestionOperacional/:idProceso" element={<GestionOperacional />} />
+      <Route path="gestionCalidad/:idProceso" element={<GestionCalidad />} />
+      <Route path="gestionInnovacion/:idProceso" element={<GestionInnovacion />} />
+      <Route path="gestionFinanciera/:idProceso" element={<GestionFinanciera />} />
+      <Route path="gestionLogistica/:idProceso" element={<GestionLogistica />} />
+      <Route path="gestionDigital/:idProceso" element={<GestionDigital />} />
+      <Route path="gestionAmbiental/:idProceso" element={<GestionAmbiental />} />
 
 
     </Routes>
