@@ -43,6 +43,7 @@ const guardar = (event) => {
   console.log(proceso);
   console.log(nuevoProcesoGuardado);
   nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica = proceso
+  nuevoProcesoGuardado.estadoDelProceso='gestionProductividad'
   procesoSave(nuevoProcesoGuardado, 'gestionProductividad')
   
   
@@ -77,7 +78,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>1</td>
                 <td style={{ width: '20%' }}><strong>Mercado Objetivo</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa tiene identificado el mercado objetivo?</label>
+                  <label htmlFor="pregunta1">¿La empresa tiene identificado el mercado objetivo?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -99,7 +100,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>2</td>
                 <td style={{ width: '20%' }}><strong>Estrategia Comercial</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa cuenta con metas comerciales medibles y verificables en un plazo de tiempo definido, con asignación del responsable de su cumplimiento?</label>
+                  <label htmlFor="pregunta1">¿La empresa cuenta con metas comerciales medibles y verificables en un plazo de tiempo definido, con asignación del responsable de su cumplimiento?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -121,7 +122,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>3</td>
                 <td style={{ width: '20%' }}><strong>Mezcla de Mercadeo</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa asigna recursos para el mercadeo de sus servicios? (promociones, material publicitario, otros).</label>
+                  <label htmlFor="pregunta1">¿La empresa asigna recursos para el mercadeo de sus servicios? (promociones, material publicitario, otros).</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -143,7 +144,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>4</td>
                 <td style={{ width: '20%' }}><strong>Mecanismos</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa evalúa periódicamente sus mecanismos de promoción y publicidad para medir su efectividad y/o continuidad?</label>
+                  <label htmlFor="pregunta1">¿La empresa evalúa periódicamente sus mecanismos de promoción y publicidad para medir su efectividad y/o continuidad?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -165,7 +166,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>5</td>
                 <td style={{ width: '20%' }}><strong>Tendencias</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa investiga tendencias del sector y de su producto o servicio a nivel local, nacional e internacional?</label>
+                  <label htmlFor="pregunta1">¿La empresa investiga tendencias del sector y de su producto o servicio a nivel local, nacional e internacional?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -187,7 +188,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>6</td>
                 <td style={{ width: '20%' }}><strong>Material de Mercadeo</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa dispone de catálogos, portafolio o flyers con las especificaciones técnicas de sus productos o servicios?</label>
+                  <label htmlFor="pregunta1">¿La empresa dispone de catálogos, portafolio o flyers con las especificaciones técnicas de sus productos o servicios?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -209,7 +210,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>7</td>
                 <td style={{ width: '20%' }}><strong>Tiempos de Entrega</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa cumple con los requisitos de tiempo de entrega a sus clientes?</label>
+                  <label htmlFor="pregunta1">¿La empresa cumple con los requisitos de tiempo de entrega a sus clientes?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -231,7 +232,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>8</td>
                 <td style={{ width: '20%' }}><strong>Prototipos</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa elabora pruebas piloto de cada producto antes de ser lanzado al mercado?</label>
+                  <label htmlFor="pregunta1">¿La empresa elabora pruebas piloto de cada producto antes de ser lanzado al mercado?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -253,7 +254,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>9</td>
                 <td style={{ width: '20%' }}><strong>Generación de Ideas</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa promueve la creación de nuevos productos y servicios para su negocio entre sus colaboradores?</label>
+                  <label htmlFor="pregunta1">¿La empresa promueve la creación de nuevos productos y servicios para su negocio entre sus colaboradores?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -275,7 +276,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>10</td>
                 <td style={{ width: '20%' }}><strong>Competencias</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa investiga periódicamente a la competencia? (Precios, productos, servicio)</label>
+                  <label htmlFor="pregunta1">¿La empresa investiga periódicamente a la competencia? (Precios, productos, servicio)</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -297,7 +298,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>11</td>
                 <td style={{ width: '20%' }}><strong>Precio</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿Los precios de la empresa están determinados con base en el conocimiento de sus costos, de la demanda y de la competencia?</label>
+                  <label htmlFor="pregunta1">¿Los precios de la empresa están determinados con base en el conocimiento de sus costos, de la demanda y de la competencia?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -319,7 +320,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>12</td>
                 <td style={{ width: '20%' }}><strong>Estrategias por Canal</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa establece estrategias por cada canal de distribución?</label>
+                  <label htmlFor="pregunta1">¿La empresa establece estrategias por cada canal de distribución?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -341,7 +342,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>13</td>
                 <td style={{ width: '20%' }}><strong>Marca</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa tiene registrada su marca (marcas) e implementa estrategias para su posicionamiento?</label>
+                  <label htmlFor="pregunta1">¿La empresa tiene registrada su marca (marcas) e implementa estrategias para su posicionamiento?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -363,7 +364,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>14</td>
                 <td style={{ width: '20%' }}><strong>Imagen Corporativa</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa cuenta con imagen corporativa? (Manual de Imagen Corporativa)</label>
+                  <label htmlFor="pregunta1">¿La empresa cuenta con imagen corporativa? (Manual de Imagen Corporativa)</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -385,7 +386,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>15</td>
                 <td style={{ width: '20%' }}><strong>Fidelización</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa cuenta con un plan de fidelización para los clientes?</label>
+                  <label htmlFor="pregunta1">¿La empresa cuenta con un plan de fidelización para los clientes?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -407,7 +408,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>16</td>
                 <td style={{ width: '20%' }}><strong>Merchandising</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa cuenta con material de merchandising?</label>
+                  <label htmlFor="pregunta1">¿La empresa cuenta con material de merchandising?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -429,7 +430,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>17</td>
                 <td style={{ width: '20%' }}><strong>Otros Productos</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa ofrece a sus clientes productos complementarios a su producto estrella?</label>
+                  <label htmlFor="pregunta1">¿La empresa ofrece a sus clientes productos complementarios a su producto estrella?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
@@ -451,7 +452,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }}>18</td>
                 <td style={{ width: '20%' }}><strong>Internacionalización</strong></td>
                 <td style={{ width: '70%' }}>
-                  <label htmlhtmlFor="pregunta1">¿La empresa exporta o importa bienes o servicios?</label>
+                  <label htmlFor="pregunta1">¿La empresa exporta o importa bienes o servicios?</label>
                 </td>
                 <td style={{ width: '3%' }} className="mantener">
                   <select
