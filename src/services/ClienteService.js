@@ -38,3 +38,11 @@ export const EmpresarioSave= async(empresario)=>{
         return error;
     }
 }
+
+export const clienteFindById = async (id) => {
+    try {
+        return axios.get(`${url}/cliente/${id}`)
+    } catch (error) {
+        console.log(error);
+    }
+}

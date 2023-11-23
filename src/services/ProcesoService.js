@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 const url = 'http://localhost:8090/api/procesos';
-export const procesosFindAll= async()=>{
+export const ProcesosFindAll= async()=>{
     try {
         const respuesta = await axios.get(`${url}`)
         return respuesta;
@@ -11,7 +12,7 @@ export const procesosFindAll= async()=>{
     }
 
  }
- export const comprobarCliente = async(idCliente)=>{
+ export const ComprobarCliente = async(idCliente)=>{
   try {
     const respuesta = await axios.get(`${url}/cliente/comprobar/${idCliente}`)
     return respuesta;
@@ -30,9 +31,15 @@ export const procesosFindAll= async()=>{
   }
 
  }
- export const procesoUpdate = async(proceso)=>{
+ export const ProcesoUpdate = async(proceso)=>{
+  let respuesta
   try {
-    const respuesta = await axios.put(`${url}/editar/procesoEmprendedor`,proceso)
+    if(proceso?.procesoEmprendedor?.id){
+      respuesta = await axios.put(`${url}/editar/procesoEmprendedor`,proceso)
+    }else{
+      respuesta = await axios.put(`${url}/editar/procesoEmpresario`,proceso)
+    }
+    
     return respuesta;
   } catch (error) {
     console.log(error);
