@@ -26,7 +26,7 @@ const [proceso, setproceso] = useState({})
                             <ul>
                                 <li><Link className='' to={`/`}>Ver</Link></li>
                                 <li><Link className='' to={`/`}>Convertir a </Link></li>
-                                <li><Link className='' to={`/`}>Seguir proceso</Link></li>
+                                <li><Link className='' to={`/${proceso?.estadoDelProceso}/${proceso?.id}`}>Continuar proceso</Link></li>
                                 <li><Link className='' to={`/`}>Editar cliente</Link></li>
                                 <li><Link className='' to={`/`}>{proceso?.id}</Link></li>
                             </ul>
