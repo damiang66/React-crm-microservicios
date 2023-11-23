@@ -1,23 +1,17 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { ModalEditarCliente } from './ModalEditarCliente';
 
-export const ClienteList = ()=>{
-    const { clientes, getClientes } = useContext(UserContext);
-    const navegate = useNavigate();
-    useEffect(()=>{
+export const ClienteList = () => {
+    const { clientes, getClientes, openModalEditar, visibleModalEditar } = useContext(UserContext);
+    useEffect(() => {
         getClientes()
-       
-    },[])
-    const abrir = ()=>{
-        navegate('/eleccion/clientes')
-    }
+    }, [])
+
     return (<>
-    
-    <h2>Lista de Clientes</h2>
-    
+          {!visibleModalEditar || <ModalEditarCliente></ModalEditarCliente>}
+        <h2>Lista de Clientes</h2>
         <table className="table">
-           
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
@@ -27,38 +21,29 @@ export const ClienteList = ()=>{
                     <th scope="col">Tipo</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
-            
+
             <tbody>
-            {clientes?.map((u) => (
+                {clientes?.map(u =>
+                    <tr key={u.id}>
+
+                        <td scope="row">{u.nombre}</td>
+                        <td>{u.apellido}</td>
+                        <td>{u.dni}</td>
+                        <td>{u.municipio?.nombre}</td>
+                        <td>{u.tipo}</td>
                 
-                <tr key={u.id}> 
-                    
-                    <td  scope="row">{u.nombre}</td>
-                    
-                    <td>{u.apellido}</td>
-                    
-                    <td>{u.dni}</td>
-                    
-                    <td>{u.municipio?.nombre}</td>
-                    <td>{u.tipo}</td>
-                    <td>
-                        {/*<Link to={`/usuarios/form/${u.id}`} className="btn btn-success">Editar</Link> */}
-                       
-                    </td>
-                    <td>
-                        <button className="btn btn-danger">Eliminar</button>
-                    </td>
+                            <td>
+                                <button className="btn btn-sm btn-success" onClick={() => openModalEditar(u.id)}>Editar</button>
+                            </td>
+                        <td>
+                            <button className="btn btn-danger btn-sm">Eliminar</button>
+                        </td>
                     </tr>
-                    
-                ))}
-                </tbody>
-
-
-
-                
-            
+                )}
+            </tbody>
         </table>
     </>)
 }

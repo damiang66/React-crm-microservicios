@@ -4,7 +4,7 @@ import { UserContext } from "../../../../contexts/UserContext"
 
 export const ActividadesClaves = () => {
     /* como esta en Java
-    private String actividadPricipal;
+    private String actividadPricipal; 
     private String comunicacionMarketing;
     private String postVenta;
     private String otros;
@@ -27,7 +27,7 @@ export const ActividadesClaves = () => {
         p.id===id
     }))
    console.log(seleccion);
-   seleccion
+
    }
    useEffect(()=>{
     getProcesos()
@@ -51,10 +51,11 @@ export const ActividadesClaves = () => {
                 <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Post Venta</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.postVenta} name="postVenta" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <div className="mb-3">
-                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Otros</label>
+
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Otros</label>
+
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.otros} name="otros" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+            
             <button onClick={guardar} className="btn btn-primary">Guardar</button>
         </form>
     </>)
