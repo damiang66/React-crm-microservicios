@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { UserContext } from "../../../../contexts/UserContext"
+import { ProcesoFindById, ProcesoSave } from "../../../../services/ProcesoService"
+import Swal from "sweetalert2"
 
 export const ActividadesClaves = () => {
     /* como esta en Java
@@ -13,27 +15,41 @@ export const ActividadesClaves = () => {
    const [proceso,setProceso]= useState({})
    const [seleccion,setSeleccion]=useState({})
    const {id}=useParams()
-   const { getProcesos,procesos} = useContext(UserContext);
+   const { getProcesos,procesos,procesoSave} = useContext(UserContext);
    const cambiar = ({target})=>{
     const {name,value}=target;
     setProceso({
         ...proceso,
-        [name]:value
-    })
-   }
+        procesoEmprendedor: {
+          ...proceso.procesoEmprendedor,
+          canvas: {
+            ...proceso.procesoEmprendedor.canvas,
+            actividadClave: {
+              ...proceso.procesoEmprendedor.canvas.actividadClave
+              ,
+              
+              [name]: value
+            }
+          }
+        }
+      });
+    }
    const guardar = (event)=>{
     event.preventDefault();
-    setSeleccion(procesos.filter(p=>{
-        p.id===id
-    }))
-   console.log(seleccion);
+
+   ProcesoSave(proceso)
+   Swal.fire('Exito', 'La actividad clave se cargo con exito', 'success')
 
    }
    useEffect(()=>{
-    getProcesos()
+  buscarProcesoPorId(id)
     
  
    },[])
+   const buscarProcesoPorId = async(id)=>{
+    const respuesta = await ProcesoFindById(id)
+    setProceso(respuesta.data)
+   }
     return (<>
     <div className="container">
     <h2>Actividades Claves</h2>
@@ -41,7 +57,7 @@ export const ActividadesClaves = () => {
         <form action="">
             <div className="mb-3">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Actividad Principal</label>
-                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.actividadPrincipal} name="actividadPrincipal" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.actividadPricipal} name="actividadPricipal" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Comunicacion Marketing</label>
