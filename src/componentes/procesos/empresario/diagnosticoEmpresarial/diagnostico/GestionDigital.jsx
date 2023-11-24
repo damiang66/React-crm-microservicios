@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 
 export const GestionDigital = () => {
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 6 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
 
     useEffect(() => {
@@ -23,16 +24,35 @@ export const GestionDigital = () => {
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionDigital = proceso;
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[7] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso='gestionAmbiental'
         procesoSave(nuevoProcesoGuardado, 'gestionAmbiental')
 
 
     }
 
 
-    const onInputChangeGestionDigital = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+    const onInputChangeGestionDigital = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionDigital = [...proceso];
+            updatedGestionDigital[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionDigital);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionDigital;
+        });
     }
 
 
@@ -58,7 +78,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[0]} className="form-select form-select-sm" name="gestionDigital[0]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[0]} className="form-select form-select-sm" name="gestionDigital_0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -75,7 +95,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[1]} className="form-select form-select-sm" name="gestionDigital[1]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[1]} className="form-select form-select-sm" name="gestionDigital_1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -93,7 +113,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[2]} className="form-select form-select-sm" name="gestionDigital[2]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[2]} className="form-select form-select-sm" name="gestionDigital_2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -110,7 +130,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[3]} className="form-select form-select-sm" name="gestionDigital[3]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[3]} className="form-select form-select-sm" name="gestionDigital_3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -127,7 +147,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[4]} className="form-select form-select-sm" name="gestionDigital[4]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[4]} className="form-select form-select-sm" name="gestionDigital_4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -145,7 +165,7 @@ export const GestionDigital = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[5]} className="form-select form-select-sm" name="gestionDigital[5]">
+                                <select onChange={onInputChangeGestionDigital} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionDigital[5]} className="form-select form-select-sm" name="gestionDigital_5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -160,7 +180,7 @@ export const GestionDigital = () => {
                                 <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
                                     Puntaje Total :
                                 </td>
-                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                             </tr>
                         </tbody>
                     </table>

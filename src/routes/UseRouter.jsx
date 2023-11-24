@@ -20,6 +20,7 @@ import { GestionFinanciera } from "../componentes/procesos/empresario/diagnostic
 import { GestionLogistica } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionLogistica"
 import { GestionDigital } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionDigital"
 import { GestionAmbiental } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionAmbiental"
+import { GestionIntelectual } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionIntelectual"
 
 export const UseRouter = () => {
   return (<>
@@ -57,6 +58,7 @@ export const UseRouter = () => {
       <Route path="gestionLogistica/:idProceso" element={<GestionLogistica />} />
       <Route path="gestionDigital/:idProceso" element={<GestionDigital />} />
       <Route path="gestionAmbiental/:idProceso" element={<GestionAmbiental />} />
+      <Route path="gestionIntelectual/:idProceso" element={<GestionIntelectual />} />
 
 
     </Routes>

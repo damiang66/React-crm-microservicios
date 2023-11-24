@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 
 export const GestionLogistica = () => {
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 6 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
 
     useEffect(() => {
@@ -23,16 +24,35 @@ export const GestionLogistica = () => {
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionLogistica = proceso;
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[6] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso='gestionDigital'
         procesoSave(nuevoProcesoGuardado, 'gestionDigital')
 
 
     }
 
 
-    const onInputChangeGestionLogistica = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+    const onInputChangeGestionLogistica = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionLogistica = [...proceso];
+            updatedGestionLogistica[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionLogistica);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionLogistica;
+        });
     }
 
     return (
@@ -57,7 +77,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[0]} className="form-select form-select-sm" name="gestionLogistica[0]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[0]} className="form-select form-select-sm" name="gestionLogistica_0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -76,7 +96,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[1]} className="form-select form-select-sm" name="gestionLogistica[1]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[1]} className="form-select form-select-sm" name="gestionLogistica_1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -94,7 +114,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[2]} className="form-select form-select-sm" name="gestionLogistica[2]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[2]} className="form-select form-select-sm" name="gestionLogistica_2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -113,7 +133,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[3]} className="form-select form-select-sm" name="gestionLogistica[3]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[3]} className="form-select form-select-sm" name="gestionLogistica_3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -131,7 +151,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[4]} className="form-select form-select-sm" name="gestionLogistica[4]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[4]} className="form-select form-select-sm" name="gestionLogistica_4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -150,7 +170,7 @@ export const GestionLogistica = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[5]} className="form-select form-select-sm" name="gestionLogistica[5]">
+                                <select onChange={onInputChangeGestionLogistica} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionLogistica[5]} className="form-select form-select-sm" name="gestionLogistica_5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -164,7 +184,7 @@ export const GestionLogistica = () => {
                                 <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
                                     Puntaje Total
                                 </td>
-                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                             </tr>
                         </tbody>
                     </table>
