@@ -38,32 +38,32 @@ export const UsuarioForm = () => {
         <h2>{titulo}</h2>
         <form onSubmit={cargarUsuario1}>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
                 <input onChange={onInputChange} value={usuario?.nombre} type="text" name="nombre" className="form-control"  aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
                 <input onChange={onInputChange} value={usuario?.apellido} name="apellido" type="text" className="form-control"  aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
                 <input onChange={onInputChange} value={usuario?.cedula} name="cedula" type="text" className="form-control"  aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Profesion</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Profesion</label>
                 <input onChange={onInputChange} value={usuario?.profesion} name="profesion" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
                 <input onChange={onInputChange} value={usuario?.telefono} name="telefono" type="text" className="form-control"  aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
                 <input onChange={onInputChange} value={usuario?.email} name="email" type="email" className="form-control"  aria-describedby="emailHelp" />
             </div>
             
             <div className="mb-3">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Password</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input onChange={onInputChange} value={usuario?.password} name="password" type="password" className="form-control" />
             </div>
             {id?<button type="submit" className="btn btn-primary">Editar</button>:<button type="submit" className="btn btn-primary">Cargar</button>}

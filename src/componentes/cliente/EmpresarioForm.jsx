@@ -52,15 +52,15 @@ export const EmpresarioForm = ()=>{
 
     <form onSubmit={guardarEmpresario} >
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Nombre</label>
                 <input onChange={onInputChange} value={empresario?.nombre} type="text" name="nombre" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Apellido</label>
                 <input onChange={onInputChange} value={empresario?.apellido} name="apellido" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Cedula</label>
                 <input onChange={onInputChange} value={empresario?.dni} name="dni" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="form-group mt-2">
@@ -94,7 +94,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Victima</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Victima</label>
                 <select name="victima" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -103,7 +103,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Desplazamiento</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Desplazamiento</label>
                 <select name="desplazamiento" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -112,7 +112,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Discapacidad</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Discapacidad</label>
                 <select name="discapacidad" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -123,20 +123,20 @@ export const EmpresarioForm = ()=>{
 
 
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Telefono</label>
                 <input onChange={onInputChange} value={empresario?.telefono} name="telefono" type="text" className="form-control" aria-describedby="emailHelp" />
             </div>
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Email</label>
                 <input onChange={onInputChange} value={empresario?.email} name="email" type="email" className="form-control" aria-describedby="emailHelp" />
             </div>
 
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Fecha de Nacimiento</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Fecha de Nacimiento</label>
                 <input onChange={onInputChange} value={empresario?.fechaNacimiento} name="fechaNacimiento" type="date" className="form-control" />
             </div>
             <div className="form-group mt-2">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">Municipio</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Municipio</label>
             <select  onChange={onInputChange} value={empresario?.municipio?.id}  name="municipio" className="form-select" aria-label="Default select example">
             <option value="">Seleccionar municipios</option>
             {municipio.map(m=>(
@@ -149,7 +149,7 @@ export const EmpresarioForm = ()=>{
                </select>
                </div>
                <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Direccion</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Direccion</label>
                 <input onChange={onInputChange} value={empresario?.direccion} name="direccion" type="text" className="form-control" />
             </div>
 
@@ -170,7 +170,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputPassword1" className="form-label">Nombre de empresa</label>
+                <label htmlhtmlhtmlFor="exampleInputPassword1" className="form-label">Nombre de empresa</label>
                 <input onChange={onInputChange} value={empresario?.nombreEmpresa} name="nombreEmpresa" type="text" className="form-control" />
             </div>
             <div className="form-group mt-2">
@@ -191,7 +191,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-            <label htmlhtmlFor="exampleInputEmail1" className="form-label">¿Tiene registro Mercantil?</label>
+            <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">¿Tiene registro Mercantil?</label>
                 <select name="registroMercantil" onChange={onInputChange} className="form-select" aria-label="Default select example">
                     <option selected>Seleccione SI/NO</option>
                     <option value={true}>SI</option>
@@ -200,7 +200,7 @@ export const EmpresarioForm = ()=>{
                 </select>
             </div>
             <div className="form-group mt-2">
-                <label htmlhtmlFor="exampleInputEmail1" className="form-label">Numero de registro mercantil</label>
+                <label htmlhtmlhtmlFor="exampleInputEmail1" className="form-label">Numero de registro mercantil</label>
                 <input onChange={onInputChange} value={empresario?.numeroRegistroMercantil} name="numeroRegistroMercantil" type="text" className="form-control" />
             </div>
             <h2>FALTA CIU</h2>

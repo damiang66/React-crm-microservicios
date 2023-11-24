@@ -19,42 +19,57 @@ let procesoGuardado = {
 
 export const GestionEstrategica = () => {
 
-  
 
-  const [proceso, setProceso] = useState([])
+  const [proceso, setProceso] = useState(Array.from({ length: 18 }, () => null))
   const { getProcesos, procesos, procesoSave } = useContext(UserContext);
-  const {idProceso}=useParams()
+  const { idProceso } = useParams()
+  const [listaTotales, setListaTotales] = useState(0)
 
   useEffect(() => {
     getProcesos()
     console.log(procesos);
     console.log(idProceso);
-}, [idProceso])
+  }, [idProceso])
 
 
 
-const guardar = (event) => {
-  console.log('guardar');
-  event.preventDefault();
+  const guardar = (event) => {
+    event.preventDefault();
+    const procesoSeleccionado = procesos.find(p => p.id === idProceso);
+    const nuevoProcesoGuardado = { ...procesoSeleccionado };
+    nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica = proceso;
+    nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales = [];
+    nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[0] = listaTotales;
+    nuevoProcesoGuardado.estadoDelProceso = 'gestionProductividad';
+    procesoSave(nuevoProcesoGuardado, 'gestionProductividad');
 
-  const procesoSeleccionado = procesos.find(p => p.id === idProceso);
-  const nuevoProcesoGuardado = { ...procesoSeleccionado };
-  console.log(procesoSeleccionado);
-  console.log(proceso);
-  console.log(nuevoProcesoGuardado);
-  nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionEstrategica = proceso
-  procesoSave(nuevoProcesoGuardado, 'gestionProductividad')
-  
-  
-  
-    
-}
+  }
+
+
+  const sumarTotales = (numeros, totales) => {
+    console.log(numeros);
+    const suma = numeros.reduce((total, val) => total + Number(val), 0);
+    totales = suma;
+    return totales;
+  }
+
 
 
   const onInputChangeGestionEstrategica = ({ target }) => {
-    const { value } = target;
+    const { name, value } = target;
+    const index = parseInt(name.split('_')[1], 10);
 
-        setProceso(proceso => [...proceso, value]);
+
+    setProceso(proceso => {
+      const updatedGestionEstrategica = [...proceso];
+      updatedGestionEstrategica[index] = value;
+
+      const newListaTotales = sumarTotales(updatedGestionEstrategica);
+      setListaTotales(newListaTotales);
+
+      return updatedGestionEstrategica;
+
+    });
   }
 
 
@@ -82,7 +97,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[0]"
+                    name="gestionEstrategica_0"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[0]}
@@ -104,7 +119,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[1]"
+                    name="gestionEstrategica_1"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[1]}
@@ -126,7 +141,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[2]"
+                    name="gestionEstrategica_2"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[2]}
@@ -148,7 +163,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[3]"
+                    name="gestionEstrategica_3"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[3]}
@@ -170,7 +185,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[4]"
+                    name="gestionEstrategica_4"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[4]}
@@ -192,7 +207,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[5]"
+                    name="gestionEstrategica_5"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[5]}
@@ -214,7 +229,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[6]"
+                    name="gestionEstrategica_6"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[6]}
@@ -236,7 +251,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[7]"
+                    name="gestionEstrategica_7"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[7]}
@@ -258,7 +273,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[8]"
+                    name="gestionEstrategica_8"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[8]}
@@ -280,7 +295,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[9]"
+                    name="gestionEstrategica_9"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[9]}
@@ -302,7 +317,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[10]"
+                    name="gestionEstrategica_10"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[10]}
@@ -324,7 +339,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[11]"
+                    name="gestionEstrategica_11"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[11]}
@@ -346,7 +361,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[12]"
+                    name="gestionEstrategica_12"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[12]}
@@ -368,7 +383,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[13]"
+                    name="gestionEstrategica_13"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[13]}
@@ -390,7 +405,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[14]"
+                    name="gestionEstrategica_14"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[14]}
@@ -412,7 +427,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[15]"
+                    name="gestionEstrategica_15"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[15]}
@@ -434,7 +449,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[16]"
+                    name="gestionEstrategica_16"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[16]}
@@ -456,7 +471,7 @@ const guardar = (event) => {
                 <td style={{ width: '3%' }} className="mantener">
                   <select
                     className="form-select form-select-sm"
-                    name="gestionEstrategica[17]"
+                    name="gestionEstrategica_17"
                     aria-label="Default select example"
                     onChange={onInputChangeGestionEstrategica}
                     value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionEstrategica[17]}
@@ -473,7 +488,9 @@ const guardar = (event) => {
                 <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
                   Puntaje Total
                 </td>
-                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+
+                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
+
               </tr>
             </tbody>
           </table>

@@ -4,27 +4,15 @@ import { useParams } from "react-router-dom";
 
 
 
-let procesoGuardado = {
-    procesoEmpresario: {
-        diagnosticoEmpresarial: {
-            diagnostico: {
-                conceptosGenerales: [],
-                gestionEstrategica: [],
-                gestionProductividad: [],
-            }
-        }
-    }
-}
-
-
 
 export const GestionProductividad = () => {
 
 
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 13 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
     useEffect(() => {
         getProcesos()
@@ -44,6 +32,8 @@ export const GestionProductividad = () => {
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionProductividad = proceso
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[1] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso = 'gestionOperacional'
         console.log(nuevoProcesoGuardado);
         procesoSave(nuevoProcesoGuardado, 'gestionOperacional')
 
@@ -53,10 +43,27 @@ export const GestionProductividad = () => {
     }
 
 
-    const onInputChangeGestionProductividad = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+    const onInputChangeGestionProductividad = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionProductividad = [...proceso];
+            updatedGestionProductividad[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionProductividad);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionProductividad;
+        });
     }
 
 
@@ -86,7 +93,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[0]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[0]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_0" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[0]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -106,7 +113,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[1]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[1]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_1" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[1]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -126,7 +133,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[2]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[2]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_2" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[2]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -146,7 +153,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[3]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[3]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_3" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[3]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -166,7 +173,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[4]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[4]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_4" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[4]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -186,7 +193,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[5]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[5]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_5" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[5]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -206,7 +213,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[6]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[6]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_6" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[6]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -226,7 +233,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[7]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[7]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_7" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[7]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -246,7 +253,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[8]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[8]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_8" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[8]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -266,7 +273,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[9]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[9]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_9" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[9]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -286,7 +293,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[10]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[10]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_10" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[10]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -306,7 +313,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[11]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[11]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_11" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[11]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -326,7 +333,7 @@ export const GestionProductividad = () => {
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[12]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[12]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_12" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[12]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -339,7 +346,7 @@ export const GestionProductividad = () => {
                             <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
                                 Puntaje Total
                             </td>
-                            <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                            <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                         </tr>
                     </tbody>
                 </table>

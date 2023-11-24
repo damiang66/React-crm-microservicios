@@ -8,6 +8,7 @@ let procesoGuardado = {
     cliente: {
 
     },
+    estadoDelProceso:{},
     procesoEmpresario: {
         diagnosticoEmpresarial: {
             diagnostico:{
@@ -45,6 +46,7 @@ export const Conceptosgenerales = () => {
         const nuevoProcesoGuardado = { ...procesoGuardado };
         nuevoProcesoGuardado.cliente = clienteSeleccionado
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.conceptosGenerales = proceso
+        nuevoProcesoGuardado.estadoDelProceso='gestionEstrategica'
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         procesoSave(nuevoProcesoGuardado, 'gestionEstrategica')
