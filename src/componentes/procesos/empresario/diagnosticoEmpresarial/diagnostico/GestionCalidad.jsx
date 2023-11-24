@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 export const GestionCalidad = () => {
 
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 10 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
 
     useEffect(() => {
@@ -20,20 +21,36 @@ export const GestionCalidad = () => {
 
         const procesoSeleccionado = procesos.find(p => p.id === idProceso);
         const nuevoProcesoGuardado = { ...procesoSeleccionado };
-        console.log(procesoSeleccionado);
-        console.log(proceso);
-        console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionCalidad = proceso;
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[3] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso = 'gestionInnovacion'
         procesoSave(nuevoProcesoGuardado, 'gestionInnovacion')
 
 
     }
 
 
-    const onInputChangeGestionCalidad = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+    const onInputChangeGestionCalidad = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionCalidad = [...proceso];
+            updatedGestionCalidad[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionCalidad);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionCalidad;
+        });
     }
 
 
@@ -62,7 +79,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[0]} className="form-select form-select-sm" name="gestionCalidad[0]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[0]} className="form-select form-select-sm" name="gestionCalidad_0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -79,7 +96,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[1]} className="form-select form-select-sm" name="gestionCalidad[1]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[1]} className="form-select form-select-sm" name="gestionCalidad_1">
 
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -99,7 +116,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[2]} className="form-select form-select-sm" name="gestionCalidad[2]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[2]} className="form-select form-select-sm" name="gestionCalidad_2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -118,7 +135,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[3]} className="form-select form-select-sm" name="gestionCalidad[3]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[3]} className="form-select form-select-sm" name="gestionCalidad_3">
 
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -139,7 +156,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[4]} className="form-select form-select-sm" name="gestionCalidad[4]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[4]} className="form-select form-select-sm" name="gestionCalidad_4">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -156,7 +173,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[5]} className="form-select form-select-sm" name="gestionCalidad[5]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[5]} className="form-select form-select-sm" name="gestionCalidad_5">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -176,7 +193,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[6]} className="form-select form-select-sm" name="gestionCalidad[6]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[6]} className="form-select form-select-sm" name="gestionCalidad_6">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -193,7 +210,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select className="form-select form-select-sm" name="cal7">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[7]} className="form-select form-select-sm" name="gestionCalidad_7">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -212,7 +229,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[7]} className="form-select form-select-sm" name="gestionCalidad[7]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[8]} className="form-select form-select-sm" name="gestionCalidad_8">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -230,7 +247,7 @@ export const GestionCalidad = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[8]} className="form-select form-select-sm" name="gestionCalidad[8]">
+                                    <select onChange={onInputChangeGestionCalidad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionCalidad[9]} className="form-select form-select-sm" name="gestionCalidad_9">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -242,9 +259,9 @@ export const GestionCalidad = () => {
                             <tr>
 
                                 <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
-
+                                    Puntaje Total
                                 </td>
-                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                             </tr>
                         </tbody >
                     </table >

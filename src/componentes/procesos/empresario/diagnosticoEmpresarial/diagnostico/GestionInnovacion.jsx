@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 
 export const GestionInnovacion = () => {
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 4 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
 
     useEffect(() => {
@@ -23,16 +24,36 @@ export const GestionInnovacion = () => {
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionInnovacion = proceso;
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[4] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso='gestionFinanciera'
         procesoSave(nuevoProcesoGuardado, 'gestionFinanciera')
 
 
     }
 
 
-    const onInputChangeGestionInnovacion = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+
+    const onInputChangeGestionInnovacion = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionInnovacion = [...proceso];
+            updatedGestionInnovacion[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionInnovacion);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionInnovacion;
+        });
     }
 
 
@@ -58,7 +79,7 @@ export const GestionInnovacion = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[0]} className="form-select form-select-sm" name="gestionInnovacion[0]">
+                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[0]} className="form-select form-select-sm" name="gestionInnovacion_0">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -77,7 +98,7 @@ export const GestionInnovacion = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[1]} className="form-select form-select-sm" name="gestionInnovacion[1]">
+                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[1]} className="form-select form-select-sm" name="gestionInnovacion_1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -94,7 +115,7 @@ export const GestionInnovacion = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[2]} className="form-select form-select-sm" name="gestionInnovacion[2]">
+                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[2]} className="form-select form-select-sm" name="gestionInnovacion_2">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -113,7 +134,7 @@ export const GestionInnovacion = () => {
                                     </label>
                                 </td>
                                 <td style={{ width: '3%' }} className="mantener">
-                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[3]} className="form-select form-select-sm" name="gestionInnovacion[3]">
+                                    <select onChange={onInputChangeGestionInnovacion} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionInnovacion[3]} className="form-select form-select-sm" name="gestionInnovacion_3">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -125,9 +146,9 @@ export const GestionInnovacion = () => {
 
                             <tr>
                                 <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
-
+                                Puntaje Total
                                 </td>
-                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                                <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                             </tr>
                         </tbody>
                     </table>

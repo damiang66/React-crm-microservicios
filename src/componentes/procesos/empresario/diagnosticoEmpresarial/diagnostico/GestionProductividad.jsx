@@ -9,9 +9,10 @@ export const GestionProductividad = () => {
 
 
 
-    const [proceso, setProceso] = useState([])
+    const [proceso, setProceso] = useState(Array.from({ length: 13 }, () => null))
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const { idProceso } = useParams()
+    const [listaTotales, setListaTotales] = useState(0)
 
     useEffect(() => {
         getProcesos()
@@ -31,6 +32,8 @@ export const GestionProductividad = () => {
         console.log(proceso);
         console.log(nuevoProcesoGuardado);
         nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.gestionProductividad = proceso
+        nuevoProcesoGuardado.procesoEmpresario.diagnosticoEmpresarial.diagnostico.totales[1] = listaTotales;
+        nuevoProcesoGuardado.estadoDelProceso = 'gestionOperacional'
         console.log(nuevoProcesoGuardado);
         procesoSave(nuevoProcesoGuardado, 'gestionOperacional')
 
@@ -40,10 +43,27 @@ export const GestionProductividad = () => {
     }
 
 
-    const onInputChangeGestionProductividad = ({ target }) => {
-        const { value } = target;
+    const sumarTotales = (numeros, totales) => {
+        console.log(numeros);
+        const suma = numeros.reduce((total, val) => total + Number(val), 0);
+        totales = suma;
+        return totales;
+    }
 
-        setProceso(proceso => [...proceso, value]);
+
+    const onInputChangeGestionProductividad = ({ target }) => {
+        const { name, value } = target;
+        const index = parseInt(name.split('_')[1], 10);
+
+        setProceso(proceso => {
+            const updatedGestionProductividad = [...proceso];
+            updatedGestionProductividad[index] = value;
+
+            const newListaTotales = sumarTotales(updatedGestionProductividad);
+            setListaTotales(newListaTotales);
+
+            return updatedGestionProductividad;
+        });
     }
 
 
@@ -68,12 +88,12 @@ export const GestionProductividad = () => {
                                 <strong>Plan Estratégico</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa cuenta con un plan estratégico (Metas corporativas, Visión, Misión, Estrategia y Objetivos)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[0]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[0]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_0" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[0]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -88,12 +108,12 @@ export const GestionProductividad = () => {
                                 <strong>Estructura Organizacional</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa cuenta con una estructura organizacional (Organigrama, Manual de funciones y responsabilidades)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[1]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[1]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_1" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[1]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -108,12 +128,12 @@ export const GestionProductividad = () => {
                                 <strong>Competencias</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa evalúa las competencias y habilidades periódicamente de sus trabajadores?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[2]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[2]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_2" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[2]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -128,12 +148,12 @@ export const GestionProductividad = () => {
                                 <strong>Cumplimiento de Normas</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿En la empresa se cumplen las normas Tributarias, Contables, Laborales y Comerciales?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[3]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[3]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_3" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[3]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -148,12 +168,12 @@ export const GestionProductividad = () => {
                                 <strong>Planeación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa realiza grupos de trabajo para planear las estrategias del mes (comerciales, marketing)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[4]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[4]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_4" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[4]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -168,12 +188,12 @@ export const GestionProductividad = () => {
                                 <strong>Manejo de Indicadores</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿En la empresa se manejan indicadores de Gestión y Productividad?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[5]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[5]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_5" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[5]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -188,12 +208,12 @@ export const GestionProductividad = () => {
                                 <strong>Proceso de Selección</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa cuenta con procesos de selección de nuevos empleados (pruebas psicológicas, psicotécnicas y de conocimiento)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[6]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[6]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_6" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[6]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -208,12 +228,12 @@ export const GestionProductividad = () => {
                                 <strong>Procesos de Inducción y Capacitación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa realiza procesos de inducción, reinducción y capacitación a los nuevos y antiguos empleados?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[7]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[7]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_7" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[7]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -228,12 +248,12 @@ export const GestionProductividad = () => {
                                 <strong>Seguridad y Salud en el Trabajo</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa cuenta con Seguridad y Salud en el Trabajo (equipo de trabajo, manuales, procedimientos)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[8]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[8]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_8" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[8]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -248,12 +268,12 @@ export const GestionProductividad = () => {
                                 <strong>Incentivos</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa maneja incentivos y recompensas por productividad y ventas y cumplimientos de metas?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[9]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[9]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_9" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[9]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -268,12 +288,12 @@ export const GestionProductividad = () => {
                                 <strong>Comunicación</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿Cuentan con canales de comunicación ágiles, asertivos y oportunos los diferentes niveles de personal de la compañía (directivos, técnicos, administrativos, otros)?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[10]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[10]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_10" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[10]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -288,12 +308,12 @@ export const GestionProductividad = () => {
                                 <strong>Desempeño</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿Realizan evaluación de desempeño a todos los colaboradores de la empresa?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[11]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[11]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_11" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[11]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -308,12 +328,12 @@ export const GestionProductividad = () => {
                                 <strong>Organizacional</strong>
                             </td>
                             <td style={{ width: '70%' }}>
-                                <label htmlhtmlFor="pregunta1">
+                                <label htmlFor="pregunta1">
                                     ¿La empresa hace medición del clima organizacional?
                                 </label>
                             </td>
                             <td style={{ width: '3%' }} className="mantener">
-                                <select className="form-select form-select-sm" name="gestionProductividad[12]" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[12]}>
+                                <select className="form-select form-select-sm" name="gestionProductividad_12" onChange={onInputChangeGestionProductividad} value={proceso?.procesoEmpresario?.diagnosticoEmpresarial?.diagnostico?.gestionProductividad[12]}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -326,7 +346,7 @@ export const GestionProductividad = () => {
                             <td colSpan="3" style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>
                                 Puntaje Total
                             </td>
-                            <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}></td>
+                            <td style={{ textAlign: 'center', backgroundColor: 'rgb(240, 240, 118)' }}>{listaTotales}</td>
                         </tr>
                     </tbody>
                 </table>
