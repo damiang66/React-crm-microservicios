@@ -2,6 +2,14 @@ import axios from "axios";
 
 
 const url = 'http://localhost:8090/api/procesos';
+export const ProcesoFindById= async(id)=>{
+  try {
+    const respuesta = await axios.get(`${url}/${id}`)
+    return respuesta;
+  } catch (error) {
+  return error;
+  }
+}
 export const ProcesosFindAll= async()=>{
     try {
         const respuesta = await axios.get(`${url}`)
