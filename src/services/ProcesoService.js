@@ -32,19 +32,21 @@ export const ProcesosFindAll= async()=>{
   try {
     console.log(proceso);
     const respuesta = await axios.post(`${url}`,proceso)
-    console.log(respuesta);
+   
     return respuesta;
   } catch (error) {
-  console.log(error);  
+return error;
   }
 
  }
  export const ProcesoUpdate = async(proceso)=>{
   let respuesta
   try {
-    if(proceso?.procesoEmprendedor?.id){
+    if(proceso?.procesoEmprendedor){
+      console.log('emprendedor');
       respuesta = await axios.put(`${url}/editar/procesoEmprendedor`,proceso)
     }else{
+      console.log('empresario');
       respuesta = await axios.put(`${url}/editar/procesoEmpresario`,proceso)
     }
     

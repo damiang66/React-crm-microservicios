@@ -31,8 +31,10 @@ export const UseProceso = ()=>{
         let response
         try {
         if(proceso.id){
+            console.log('con id');
             response = await ProcesoUpdate(proceso)  
           }else{
+            console.log('sin id');
               response = await ProcesoSave(proceso);
           }
            
