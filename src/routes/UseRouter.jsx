@@ -21,6 +21,8 @@ import { GestionLogistica } from "../componentes/procesos/empresario/diagnostico
 import { GestionDigital } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionDigital"
 import { GestionAmbiental } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionAmbiental"
 import { GestionIntelectual } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionIntelectual"
+import { Canales } from "../componentes/procesos/emprendedor/canvas/Canales"
+import { EstructuraCosto } from "../componentes/procesos/emprendedor/canvas/EstructuraCosto"
 
 export const UseRouter = () => {
   return (<>
@@ -45,6 +47,8 @@ export const UseRouter = () => {
       <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
         // canvas
       <Route path="actividadesClaves/:id" element={<ActividadesClaves />} />
+      <Route path="canales/:id" element={<Canales />} />
+      <Route path="estructuraCosto/:id" element={ <EstructuraCosto/>} />
      //empresario
       //diagnostico
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />

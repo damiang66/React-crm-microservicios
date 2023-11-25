@@ -20,8 +20,10 @@ export const ActividadesClaves = () => {
     const {name,value}=target;
     setProceso({
         ...proceso,
+        estadoDelProceso:"canales",
         procesoEmprendedor: {
           ...proceso.procesoEmprendedor,
+
           canvas: {
             ...proceso.procesoEmprendedor.canvas,
             actividadClave: {
@@ -36,9 +38,10 @@ export const ActividadesClaves = () => {
     }
    const guardar = (event)=>{
     event.preventDefault();
+   console.log(proceso);
 
-   ProcesoSave(proceso)
-   Swal.fire('Exito', 'La actividad clave se cargo con exito', 'success')
+  procesoSave(proceso,'canales')
+   //Swal.fire('Exito', 'La actividad clave se cargo con exito', 'success')
 
    }
    useEffect(()=>{
@@ -62,11 +65,11 @@ export const ActividadesClaves = () => {
 
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Comunicacion Marketing</label>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Comunicacion Marketing</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.comunicacionMarketing} name="comunicacionMarketing" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
-                <label htmlhtmlFor="exampleFormControlTextarea1" className="form-label">Post Venta</label>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Post Venta</label>
                 <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.actividadClave?.postVenta} name="postVenta" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
