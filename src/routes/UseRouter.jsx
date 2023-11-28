@@ -46,9 +46,9 @@ export const UseRouter = () => {
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
       <Route path="autoevaluacion/:idCliente" element={<Autoevaluacion />} />
         // canvas
-      <Route path="actividadesClaves/:id" element={<ActividadesClaves />} />
-      <Route path="canales/:id" element={<Canales />} />
-      <Route path="estructuraCosto/:id" element={ <EstructuraCosto/>} />
+      <Route path="actividadesClaves/:idProceso" element={<ActividadesClaves />} />
+      <Route path="canales/:idProceso" element={<Canales />} />
+      <Route path="estructuraCosto/:idProceso" element={ <EstructuraCosto/>} />
      //empresario
       //diagnostico
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
