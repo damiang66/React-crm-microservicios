@@ -6,9 +6,9 @@ import { UserContext } from '../../../../contexts/UserContext';
 import { ProcesoFindById } from '../../../../services/ProcesoService';
 
 export const EstructuraCosto = () => {
-  // const [proceso, setProceso] = useState({})
- // let proceso = {}
- 
+    // const [proceso, setProceso] = useState({})
+    // let proceso = {}
+
     const { idProceso } = useParams()
     const { getProcesos, procesos, procesoSave } = useContext(UserContext);
     const [costoFijo, setCostoFijo] = useState({ nombre: '', monto: '' });
@@ -18,31 +18,37 @@ export const EstructuraCosto = () => {
     const [totalMonto, setTotalMonto] = useState(0);
     const [totalMontoVariable, setTotalMontoVariable] = useState(0);
     let totalVariable = 0
-    useEffect(()=>{
-      //  console.log(idProceso);
-     // buscarProcesoPorId(idProceso)
-     getProcesos()
-    },[idProceso])
-    const buscarProcesoPorId = async(idProceso)=>{
-     //   const respuesta = await ProcesoFindById(idProceso)
-     // proceso = respuesta.data;
-       }
-    const guardar = (event)=>{
+    useEffect(() => {
+        //  console.log(idProceso);
+        // buscarProcesoPorId(idProceso)
+        getProcesos()
+    }, [idProceso])
+    const buscarProcesoPorId = async (idProceso) => {
+        //   const respuesta = await ProcesoFindById(idProceso)
+        // proceso = respuesta.data;
+    }
+    const guardar = (event) => {
         const procesoSeleccionado = procesos.find(p => p.id === idProceso);
-    const nuevoProcesoGuardado = { ...procesoSeleccionado };
+        const nuevoProcesoGuardado = { ...procesoSeleccionado };
 
         event.preventDefault();
         //console.log(proceso);
-      // console.log(listaCostosFijos);
-      nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto={}
-       nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoFIjo=[]
-        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoFIjo=listaCostosFijos;
-       console.log(nuevoProcesoGuardado);
-        
-     // procesoSave(proceso,'canales')
-      
-    
-       }
+        // console.log(listaCostosFijos);
+        nuevoProcesoGuardado.estadoDelProceso='flujoDeIngreso'
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto = {}
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoVariable = []
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoFIjo = []
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoFIjo = listaCostosFijos;
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.costoVariable = listaCostosVariable;
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.totalCostoFijo = totalMonto;
+        nuevoProcesoGuardado.procesoEmprendedor.canvas.estructuraCosto.totalCostoVariable = totalMontoVariable;
+
+        console.log(nuevoProcesoGuardado);
+
+         procesoSave(nuevoProcesoGuardado,'FlujoDeIngreso')
+
+
+    }
     const agregarFijo = () => {
         if (costoFijo.nombre && costoFijo.monto) {
             const nuevoMonto = parseFloat(costoFijo.monto);
@@ -102,7 +108,7 @@ export const EstructuraCosto = () => {
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Monto</th>
-                           
+
 
                         </tr>
                     </thead>
