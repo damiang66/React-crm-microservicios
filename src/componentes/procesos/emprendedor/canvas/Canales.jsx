@@ -14,7 +14,7 @@ export const Canales = ()=>{
     */
   const [proceso,setProceso]= useState({})
   const [seleccion,setSeleccion]=useState({})
-  const {id}=useParams()
+  const {idProceso}=useParams()
   const { getProcesos,procesos,procesoSave} = useContext(UserContext);
   const cambiar = ({target})=>{
    const {name,value}=target;
@@ -45,12 +45,12 @@ export const Canales = ()=>{
 
   }
   useEffect(()=>{
- buscarProcesoPorId(id)
+ buscarProcesoPorId(idProceso)
    
 
   },[])
-  const buscarProcesoPorId = async(id)=>{
-   const respuesta = await ProcesoFindById(id)
+  const buscarProcesoPorId = async(idProceso)=>{
+   const respuesta = await ProcesoFindById(idProceso)
    setProceso(respuesta.data)
   }
     return(<>

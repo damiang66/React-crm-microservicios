@@ -23,6 +23,7 @@ import { GestionAmbiental } from "../componentes/procesos/empresario/diagnostico
 import { GestionIntelectual } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionIntelectual"
 import { Canales } from "../componentes/procesos/emprendedor/canvas/Canales"
 import { EstructuraCosto } from "../componentes/procesos/emprendedor/canvas/EstructuraCosto"
+import { FlujoDeIngreso } from "../componentes/procesos/emprendedor/canvas/FlujoDeIngreso"
 
 export const UseRouter = () => {
   return (<>
@@ -49,6 +50,8 @@ export const UseRouter = () => {
       <Route path="actividadesClaves/:idProceso" element={<ActividadesClaves />} />
       <Route path="canales/:idProceso" element={<Canales />} />
       <Route path="estructuraCosto/:idProceso" element={ <EstructuraCosto/>} />
+      <Route path="flujoDeIngreso/:idProceso" element={ <FlujoDeIngreso />} />
+
      //empresario
       //diagnostico
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
