@@ -23,6 +23,8 @@ import { GestionAmbiental } from "../componentes/procesos/empresario/diagnostico
 import { GestionIntelectual } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionIntelectual"
 import { Canales } from "../componentes/procesos/emprendedor/canvas/Canales"
 import { EstructuraCosto } from "../componentes/procesos/emprendedor/canvas/EstructuraCosto"
+import { PlanDeAccion } from "../componentes/procesos/empresario/planDeAccion/PlanDeAccion"
+import { AnalisisResultado } from "../componentes/procesos/empresario/diagnosticoEmpresarial/analisisResultado/AnalisisResultado"
 
 export const UseRouter = () => {
   return (<>
@@ -50,6 +52,7 @@ export const UseRouter = () => {
       <Route path="canales/:idProceso" element={<Canales />} />
       <Route path="estructuraCosto/:idProceso" element={ <EstructuraCosto/>} />
      //empresario
+     //diagnosticoEmpresarial
       //diagnostico
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
       <Route path="conceptosGenerales/:idCliente" element={<Conceptosgenerales />} />
@@ -63,6 +66,10 @@ export const UseRouter = () => {
       <Route path="gestionDigital/:idProceso" element={<GestionDigital />} />
       <Route path="gestionAmbiental/:idProceso" element={<GestionAmbiental />} />
       <Route path="gestionIntelectual/:idProceso" element={<GestionIntelectual />} />
+      //analisesResultados
+      <Route path="analisisResultado/:idProceso" element={<AnalisisResultado />} />
+      //planDeAccion
+      <Route path="planDeAccion/:idProceso" element={<PlanDeAccion />} />
 
 
     </Routes>
