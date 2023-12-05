@@ -56,20 +56,26 @@ export const RecursoClave = ()=>{
     <form action="">
             <div className="mb-3">
 
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Captacion</label>
-                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.captacion} name="captacion" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Recurso Humano</label>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.humano} name="humano" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Fidelizacion</label>
-                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.fidelizacion} name="fidelizacion" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Recurso Fisico</label>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.fisico} name="fisico" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">Estimulacion</label>
-                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.estimulacion} name="estimulacion" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Recurso Intelectuales</label>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.intelectuales} name="intelectuales" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-           
-              
+            <div className="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Recurso Tecnologicos</label>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.tecnologicos} name="tecnologicos" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Otros</label>
+                <textarea onChange={cambiar} value={proceso?.procesoEmprendedor?.canvas?.recursoClave?.otros} name="otros" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
             
             <button onClick={guardar} className="btn btn-primary">Guardar</button>
         </form>

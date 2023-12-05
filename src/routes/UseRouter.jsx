@@ -27,6 +27,8 @@ import { FlujoDeIngreso } from "../componentes/procesos/emprendedor/canvas/Flujo
 import { PropuestaValor } from "../componentes/procesos/emprendedor/canvas/PropuestaValor"
 import { RecursoClave } from "../componentes/procesos/emprendedor/canvas/RecursoClave"
 import { RelacionCliente } from "../componentes/procesos/emprendedor/canvas/RelacionCliente"
+import { SegmentoCliente } from "../componentes/procesos/emprendedor/canvas/SegmentoCliente"
+import { SocioClave } from "../componentes/procesos/emprendedor/canvas/SocioClave"
 
 export const UseRouter = () => {
   return (<>
@@ -57,6 +59,8 @@ export const UseRouter = () => {
       <Route path="propuestaValor/:idProceso" element={ <PropuestaValor />} />
       <Route path="recursoClave/:idProceso" element={ <RecursoClave />} />
       <Route path="relacionCliente/:idProceso" element={ <RelacionCliente />} />
+      <Route path="segmentoCliente/:idProceso" element={ <SegmentoCliente />} />
+      <Route path="socioClave/:idProceso" element={ <SocioClave />} />
 
      //empresario
       //diagnostico
