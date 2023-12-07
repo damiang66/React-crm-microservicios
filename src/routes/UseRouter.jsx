@@ -23,13 +23,18 @@ import { GestionAmbiental } from "../componentes/procesos/empresario/diagnostico
 import { GestionIntelectual } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/GestionIntelectual"
 import { Canales } from "../componentes/procesos/emprendedor/canvas/Canales"
 import { EstructuraCosto } from "../componentes/procesos/emprendedor/canvas/EstructuraCosto"
+import { PlanDeAccion } from "../componentes/procesos/empresario/planDeAccion/PlanDeAccion"
+import { AnalisisResultado } from "../componentes/procesos/empresario/diagnosticoEmpresarial/analisisResultado/AnalisisResultado"
 import { FlujoDeIngreso } from "../componentes/procesos/emprendedor/canvas/FlujoDeIngreso"
 import { PropuestaValor } from "../componentes/procesos/emprendedor/canvas/PropuestaValor"
 import { RecursoClave } from "../componentes/procesos/emprendedor/canvas/RecursoClave"
 import { RelacionCliente } from "../componentes/procesos/emprendedor/canvas/RelacionCliente"
+import { AnalisisEconomico } from "../componentes/procesos/empresario/diagnosticoEmpresarial/analisisEconomico/AnalisisEconomico"
+import { Totales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/Totales"
 import { SegmentoCliente } from "../componentes/procesos/emprendedor/canvas/SegmentoCliente"
 import { SocioClave } from "../componentes/procesos/emprendedor/canvas/SocioClave"
 import { ProcesoDeCliente } from "../componentes/procesos/ProcesoDeCliente"
+
 
 export const UseRouter = () => {
   return (<>
@@ -65,6 +70,7 @@ export const UseRouter = () => {
       <Route path="socioClave/:idProceso" element={ <SocioClave />} />
 
      //empresario
+     //diagnosticoEmpresarial
       //diagnostico
       <Route path="conceptosGenerales" element={<Conceptosgenerales />} />
       <Route path="conceptosGenerales/:idCliente" element={<Conceptosgenerales />} />
@@ -78,6 +84,13 @@ export const UseRouter = () => {
       <Route path="gestionDigital/:idProceso" element={<GestionDigital />} />
       <Route path="gestionAmbiental/:idProceso" element={<GestionAmbiental />} />
       <Route path="gestionIntelectual/:idProceso" element={<GestionIntelectual />} />
+      <Route path="gestionTotales/:idProceso" element={<Totales />} />
+      //analisisResultados
+      <Route path="analisisResultado/:idProceso" element={<AnalisisResultado />} />
+      //analisisEconomico
+      <Route path="analisisEconomico/:idProceso" element={<AnalisisEconomico />} />
+      //planDeAccion
+      <Route path="planDeAccion/:idProceso" element={<PlanDeAccion />} />
 
 
     </Routes>
