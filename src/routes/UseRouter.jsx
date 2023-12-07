@@ -31,6 +31,10 @@ import { RecursoClave } from "../componentes/procesos/emprendedor/canvas/Recurso
 import { RelacionCliente } from "../componentes/procesos/emprendedor/canvas/RelacionCliente"
 import { AnalisisEconomico } from "../componentes/procesos/empresario/diagnosticoEmpresarial/analisisEconomico/AnalisisEconomico"
 import { Totales } from "../componentes/procesos/empresario/diagnosticoEmpresarial/diagnostico/Totales"
+import { SegmentoCliente } from "../componentes/procesos/emprendedor/canvas/SegmentoCliente"
+import { SocioClave } from "../componentes/procesos/emprendedor/canvas/SocioClave"
+import { ProcesoDeCliente } from "../componentes/procesos/ProcesoDeCliente"
+
 
 export const UseRouter = () => {
   return (<>
@@ -49,6 +53,7 @@ export const UseRouter = () => {
       <Route path="emprendedor" element={<EmprendedorForm />} />
       <Route path="empresario" element={<EmpresarioForm />} />
       //procesos
+      <Route path="procesoPorCliente/:idProceso" element={<ProcesoDeCliente />} />
       <Route path="procesos" element={<ProcesosAllPage />} />
       // emprendedor
       <Route path="autoevaluacion" element={<Autoevaluacion />} />
@@ -61,6 +66,8 @@ export const UseRouter = () => {
       <Route path="propuestaValor/:idProceso" element={ <PropuestaValor />} />
       <Route path="recursoClave/:idProceso" element={ <RecursoClave />} />
       <Route path="relacionCliente/:idProceso" element={ <RelacionCliente />} />
+      <Route path="segmentoCliente/:idProceso" element={ <SegmentoCliente />} />
+      <Route path="socioClave/:idProceso" element={ <SocioClave />} />
 
      //empresario
      //diagnosticoEmpresarial
