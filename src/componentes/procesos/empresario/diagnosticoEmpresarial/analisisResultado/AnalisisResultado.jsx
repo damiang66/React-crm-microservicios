@@ -36,7 +36,7 @@ export const AnalisisResultado = () => {
             event.preventDefault();
            console.log(proceso);
         
-          procesoSave(proceso,'analisisEconomica')
+          procesoSave(proceso,'analisisEconomico')
            //Swal.fire('Exito', 'La actividad clave se cargo con exito', 'success')
         
            }
